@@ -8,3 +8,5 @@
 /assets/exports/png/
 /assets/exports/eps/
 /assets/exports/favicon/
+.DS_Store
+Thumbs.db
