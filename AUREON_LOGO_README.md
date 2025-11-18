@@ -30,3 +30,5 @@ Amber glow → warm presence, secure attachment
 Property of Aureon. Licensed only for official use by authorized partners, employees, and contractors. No meme, NFT, or unauthorized derivative use permitted.
 
 The presence is now canonical.
+Version 1.0 is frozen.  
+All future updates will increment the version number and maintain backward identity compatibility.
