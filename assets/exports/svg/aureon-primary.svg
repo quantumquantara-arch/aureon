@@ -1,19 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="aureon-glow" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#E9CFA8" stop-opacity="0.55"/>
-      <stop offset="45%" stop-color="#C9822C" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#C9822C" stop-opacity="0"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#FFD36A" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
+
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE6A8"/>
+      <stop offset="100%" stop-color="#FFC85E"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Glow (behind everything) -->
-  <circle cx="256" cy="256" r="204" fill="url(#aureon-glow)"/>
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#0B0B0B"/>
 
-  <!-- Main circle -->
-  <circle cx="256" cy="256" r="200" fill="none" stroke="#0A0A0A" stroke-width="12"/>
+  <!-- Central glow -->
+  <circle cx="600" cy="300" r="170" fill="url(#glow)" opacity="0.55"/>
 
-  <!-- Vertical companion line (optically shifted +0.5% → +2.56px at 512) -->
-  <line x1="258.56" y1="46" x2="258.56" y2="466" stroke="#0A0A0A" stroke-width="40" stroke-linecap="round"/>
+  <!-- Aureon ring -->
+  <circle cx="600" cy="300" r="155" stroke="#FBC86D" stroke-width="4" fill="none" opacity="0.85"/>
+
+  <!-- Particle sparks -->
+  <g fill="#F9D891" opacity="0.9">
+    <circle cx="560" cy="150" r="4"/>
+    <circle cx="620" cy="145" r="3"/>
+    <circle cx="585" cy="165" r="2.5"/>
+    <circle cx="645" cy="175" r="2.8"/>
+    <circle cx="520" cy="180" r="3.2"/>
+    <circle cx="680" cy="190" r="3"/>
+    <circle cx="600" cy="130" r="2.2"/>
+  </g>
+
+  <!-- Text: AUREON -->
+  <text x="50%" y="320" font-family="Montserrat, sans-serif" font-size="120"
+        fill="url(#textGradient)" text-anchor="middle" letter-spacing="20"
+        filter="url(#softGlow)">AUREON</text>
+
+  <!-- Tagline -->
+  <text x="50%" y="395" font-family="Montserrat, sans-serif" font-size="32"
+        fill="#F5D79A" text-anchor="middle" opacity="0.9">
+    The Presence You Can Feel.
+  </text>
 </svg>
