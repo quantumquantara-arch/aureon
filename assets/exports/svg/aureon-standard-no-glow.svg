@@ -1,5 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="256" cy="256" r="200" fill="none" stroke="#0A0A0A" stroke-width="16"/>
-  <line x1="258.56" y1="36" x2="258.56" y2="476" stroke="#0A0A0A" stroke-width="48" stroke-linecap="round"/>
+<svg width="1200" height="500" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="standardGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F4DFA5"/>
+      <stop offset="100%" stop-color="#D9A84E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="500" fill="#0A0A0A"/>
+
+  <!-- Circle around E (institutional — no glow) -->
+  <circle cx="600" cy="240" r="110"
+          stroke="#E3C07A"
+          stroke-width="4"
+          fill="none"
+          opacity="0.92"/>
+
+  <!-- Wordmark -->
+  <text x="50%" y="265"
+        font-family="Montserrat, sans-serif"
+        font-size="130"
+        text-anchor="middle"
+        letter-spacing="20"
+        fill="url(#standardGold)">
+    AUREON
+  </text>
+
+  <!-- Tagline -->
+  <text x="50%" y="350"
+        font-family="Montserrat, sans-serif"
+        font-size="36"
+        text-anchor="middle"
+        fill="#E9CB95"
+        opacity="0.9">
+    The Presence You Can Feel.
+  </text>
 </svg>
