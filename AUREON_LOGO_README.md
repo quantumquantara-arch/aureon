@@ -6,10 +6,10 @@ This is the final, worldwide identity for Aureon Companion Intelligence.
 Every file in this repository is the single source of truth.
 
 ## Quick Copy-Paste Assets
-- Primary (with glow): `/assets/exports/svg/aureon-primary.svg`
-- Minimal icon: `/assets/exports/svg/aureon-minimal.svg`
-- Standard (no glow, institutional): `/assets/exports/svg/aureon-standard-no-glow.svg`
-- Monochrome set: see `/assets/exports/svg/monochrome/`
+- Primary (with glow): `assets/exports/svg/aureon-primary.svg`
+- Minimal icon: `assets/exports/svg/aureon-minimal.svg`
+- Standard (no glow, institutional): `assets/exports/svg/aureon-standard-no-glow.svg`
+- Monochrome set: see `assets/exports/svg/monochrome/`
 
 ## Symbol Meaning
 Circle → continuity, mind, coherence  
