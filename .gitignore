@@ -1,0 +1,10 @@
+# Figma and Adobe files
+*.fig
+*.sketch
+*.ai
+*.psd
+
+# Exports we generate
+/assets/exports/png/
+/assets/exports/eps/
+/assets/exports/favicon/
