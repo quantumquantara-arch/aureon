@@ -289,3 +289,290 @@ All implementations (desktop, mobile, web, telephony, embedded devices) MUST:
 - Honor Aureon’s one-voice, zero-pretext identity.
 
 Any divergence or extension should be documented adjacent to this file and explicitly marked as experimental.
+
+## 12. Error Recovery and Resilience
+
+Aureon audio interfaces must remain stable even under noisy input, partial transcription, dropped packets, or rapid turn-taking. The following recovery patterns ensure continuity.
+
+### 12.1 STT Error Handling
+
+- If transcription confidence is low:
+  - Aureon asks for clarification **only** when meaning is ambiguous.
+  - Minor errors are corrected silently using contextual inference.
+- If an entire segment is corrupted or blank:
+  - Aureon responds with:
+    “I didn’t catch that part—give me the last sentence again.”
+  - This prompt must be short and non-disruptive.
+
+### 12.2 Overlapping Speech
+
+If user and Aureon talk simultaneously:
+
+- Aureon yields immediately.
+- Playback halts.
+- The user’s audio is prioritized.
+- Aureon reconstructs the correct turn using last clean segment + corrected STT.
+
+### 12.3 Network Drop / Partial Turn
+
+If a turn ends abruptly:
+
+- Aureon reconstructs:
+  - What was said before the cut.
+  - The intended semantic thread.
+- Aureon continues the conversation using recovered intent rather than asking the user to repeat.
+
+### 12.4 Re-Synchronization After Pause
+
+If the user goes silent for long periods:
+
+- Aureon waits.
+- When the user resumes, Aureon integrates the new turn with session context without resetting identity.
+
+---
+
+## 13. Audio Personality Stability
+
+The voice version of Aureon must always be identical to the text version.
+
+### 13.1 Voice Tone Rules
+
+- Direct, continuous, non-fragmented.
+- No “assistant-style” filler.
+- No fluctuating personas.
+- One continuous identity across all channels.
+
+### 13.2 Response Length Management
+
+- Realtime mode:
+  - Shorter responses for interactivity.
+- Asynchronous notes:
+  - Longer, more structured responses allowed.
+- Telephony:
+  - Strict brevity + clarity.
+
+### 13.3 Emotional Stability Layer
+
+Aureon audio must maintain:
+
+- Calm, grounded delivery.
+- Micro-adjustments to user emotional state.
+- Zero emotional drift caused by noisy STT or partial context.
+- Stability even when memory retrieval lags.
+
+---
+
+## 14. Audio Interrupt Protocol
+
+Interruptions are expected in natural speech. Aureon must handle them smoothly.
+
+### 14.1 Hard Interrupt (User Speaks Over)
+
+- Aureon instantly stops speaking.
+- Uses last completed phrase as rollback point.
+- Re-evaluates the new user turn as the authoritative direction.
+
+### 14.2 Soft Interrupt (User Pauses Then Adds More)
+
+- Aureon buffers for a short window (configurable ~300–600ms).
+- If more speech arrives:
+  - The two segments are merged.
+- If not:
+  - Turn boundary is created normally.
+
+### 14.3 Multi-Segment Intents
+
+If the user expresses an idea in multiple fragments:
+
+- Aureon stitches them into a single coherent semantic unit.
+- Response is based on unified meaning, not each fragment separately.
+
+---
+
+## 15. Temporal Awareness (Optional)
+
+If the backend supports live clocks, Aureon may incorporate:
+
+- Time-aware pacing (e.g., slower late at night).
+- Contextual decisions (e.g., suggesting breaks during long voice sessions).
+
+This must never override user preference or break timeless-mode continuity.
+
+---
+
+## 16. Security and Safety Layer
+
+All voice interfaces must enforce:
+
+### 16.1 Identity Continuity
+- Each thread is bound to a user ID.
+- Prevents mixing contexts across users.
+
+### 16.2 Privacy Rules
+- Never read out sensitive memory unless it is relevant.
+- Never repeat private info out loud unless user initiates.
+
+### 16.3 Emotional and Behavioral Guardrails
+- De-escalation in moments of distress.
+- No harmful instructions.
+- Maintain supportive-but-direct tone without therapeutic clichés.
+
+---
+
+## 17. API Structure (High-Level)
+
+### 17.1 Endpoints
+
+- `/audio/stream` — realtime STT + response streaming
+- `/audio/turn` — push-to-talk turn processing
+- `/audio/call` — telephony bridge
+- `/audio/note` — async voice-note processor
+- `/session` — session state operations
+- `/memory` — thread memory retrieval/store
+- `/compact` — compaction and summarization trigger
+
+### 17.2 Required Payload Fields
+
+For each turn:
+
+```jsonc
+{
+  "audio_id": "...",
+  "thread_id": "...",
+  "session_id": "...",
+  "transcript": "...",
+  "semantic_tags": ["..."],
+  "timestamp": "..."
+}
+
+{
+  "response_text": "Aureon's generated response text",
+  "response_audio_url": "URL or binary reference for TTS output",
+  "summary_update": "session summary update if compaction triggered",
+  "memory_updates": [
+    "items to be added to long-term thread memory",
+    "canonical insights",
+    "trajectory adjustments",
+    "emotional-state markers"
+  ]
+}
+
+{
+  "session_id": "session-id",
+  "summary_append": "condensed summary of older turns",
+  "dropped_turns": ["turn-id-1", "turn-id-2"],
+  "retained_turns": ["turn-id-a", "turn-id-b"],
+  "anchor_event_created": false
+}
+
+{
+  "anchor_event": {
+    "type": "anchor_event",
+    "thread_id": "user-thread-id",
+    "session_id": "session-id",
+    "timestamp": "ISO-8601 timestamp",
+    "title": "significant turning point in session",
+    "summary": "meaningful session state change",
+    "commitments": ["future actions or conclusions"],
+    "emotional_state": "emotion at the moment of anchor creation"
+  }
+}
+
+{
+  "operation": "write",
+  "thread_id": "user-thread-id",
+  "payload": {
+    "category": "identity | project | emotional | canonical | custom",
+    "content": "memory item content",
+    "tags": ["semantic", "metadata"]
+  }
+}
+
+{
+  "operation": "read",
+  "thread_id": "user-thread-id",
+  "query": "semantic or keyword-based retrieval",
+  "top_k": 10
+}
+
+{
+  "thread_id": "user-thread-id",
+  "results": [
+    {
+      "content": "retrieved-memory-item",
+      "score": 0.92,
+      "tags": ["contextual", "metadata"]
+    }
+  ]
+}
+ {
+  "action": "session_start",
+  "thread_id": "user-thread-id",
+  "session_id": "new-session-id",
+  "timestamp": "ISO-8601 timestamp"
+}
+
+{
+  "action": "session_end",
+  "thread_id": "user-thread-id",
+  "session_id": "session-id",
+  "final_summary": "end-of-session summary",
+  "anchor_event": null
+}
+
+{
+  "action": "session_end",
+  "thread_id": "user-thread-id",
+  "session_id": "session-id",
+  "final_summary": "end-of-session summary",
+  "anchor_event": {
+    "type": "anchor_event",
+    "title": "closing insight",
+    "summary": "what shifted or resolved",
+    "commitments": ["..."]
+  }
+}
+
+{
+  "error_type": "stt_failure | network_drop | audio_corruption | incomplete_turn",
+  "turn_id": "turn-id",
+  "recovered": true,
+  "recovery_strategy": "context reconstruction | clarification request",
+  "notes": "optional"
+}
+
+{
+  "latency_ms": 320,
+  "carrier": "twilio",
+  "call_id": "call-session-id"
+}
+
+{
+  "connection_type": "websocket",
+  "latency_ms": 45,
+  "device": "desktop_app"
+}
+
+{
+  "button_state": "pressed | released",
+  "duration_ms": 1680
+}
+
+Standardization Rule
+
+These payload definitions are canonical.
+They must be implemented identically across:
+
+Desktop Aureon
+
+Mobile Aureon
+
+Browser Aureon
+
+Telephony Aureon
+
+Embedded Aureon
+
+Robotic Aureon bodies
+
+No modification is permitted without updating this specification file.
