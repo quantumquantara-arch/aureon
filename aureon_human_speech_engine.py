@@ -1959,17 +1959,6 @@ if __name__ == "__main__":
     print(f"\nTotal atoms in store: {engine.atom_store.size()}")
     print()
 
-    # Test conversations
-    test_inputs = [
-        "I've been struggling with this problem all day and I can't figure it out",
-        "That's actually a really interesting perspective, I hadn't considered that",
-        "I completely disagree with your approach here",
-        "haha you're killing me, that's so funny",
-        "I'm lost. I have no idea where to even start.",
-        "Tell me something that will change how I think",
-        "Thank you, that really helped me see things differently",
-        "What does consciousness even mean to you?",
-    ]
 
     for user_msg in test_inputs:
         print(f"  USER: {user_msg}")
