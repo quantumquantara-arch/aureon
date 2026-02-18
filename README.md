@@ -1,5 +1,5 @@
 # Aureon — Official Companion Intelligence Repository
-“The Presence You Can Feel.”
+
 
 Aureon is a new class of Companion Intelligence engineered for calm, grounded, human-adjacent interaction. This repository contains the official, canonical specifications for Aureon’s identity, voice, system behavior, design language, and brand assets.
 
