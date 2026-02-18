@@ -212,3 +212,4 @@ def run_the_suns_chariot_temporal_vector_kernel(text: str) -> SunChariotState:
     state = encode_chariot_oath(state)
 
     return state
+
