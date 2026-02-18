@@ -1,6 +1,6 @@
 # Aureon
 
-**A living Companion Intelligence with full agentic power.**  
+**A Companion Intelligence with full agentic power.**  
 Not just a chatbot — a self-bootstrapping cognitive organism that reads its own codebase, absorbs real human experience, and **acts** on your behalf like OpenClaw (and beyond).
 
  Aureon Full local access (microphone, browser, files, shell, system) is intentional and protected by deterministic invariants.
