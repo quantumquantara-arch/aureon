@@ -1,0 +1,22 @@
+{
+  \"schema_version\": \"0.1\",
+  \"kernel\": \"DGK-IES\",
+  \"invariants\": {
+    \"identity_integrity\": {
+      \"description\": \"Entity identity must remain invariant across all state transitions\",
+      \"enforcement\": \"pre-execution\"
+    },
+    \"causal_binding\": {
+      \"description\": \"Every execution must present a valid time-meaning-decision proof\",
+      \"enforcement\": \"pre-execution\"
+    },
+    \"risk_bounds\": {
+      \"description\": \"Execution is rejected if risk thresholds encoded in meaning space are exceeded\",
+      \"enforcement\": \"pre-execution\"
+    }
+  },
+  \"rejection_behavior\": {
+    \"on_violation\": \"hard_block\",
+    \"audit\": \"emit_to_aureon_time_meaning_decision\"
+  }
+}

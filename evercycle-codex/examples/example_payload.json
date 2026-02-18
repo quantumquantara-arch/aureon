@@ -1,0 +1,16 @@
+{
+  "cosmic": 7.3,
+  "civilizational": 4.6,
+  "personal": 88,
+  "metrics": {
+    "kappa": 0.62,
+    "tau": 0.47,
+    "sigma": 0.71
+  },
+  "derived": {
+    "stability_index": -0.09,
+    "personal_resonance_score": 0.455,
+    "collapse_probability": 0.38
+  },
+  "annotations": "Late-tension, pre-reorganization era; personal phase in late expansion. High systemic risk, moderate coherence, partial temporal misalignment."
+}

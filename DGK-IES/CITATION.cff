@@ -1,0 +1,9 @@
+﻿cff-version: 1.2.0
+title: DGK-IES
+authors:
+  - family-names: Squires
+    given-names: Nadine
+version: 0.1.0
+date-released: 2025-01-01
+repository-code: https://github.com/purpledancingfrogs/DGK-IES
+license: MIT
