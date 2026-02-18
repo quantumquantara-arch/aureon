@@ -1,0 +1,29 @@
+# coherence_lattice/__init__.py
+
+"""
+Aureon Coherence Lattice
+Foundational substrate for protected routing, self-continuity,
+and organ-to-organ signal flow inside the Aureon OS.
+
+This namespace anchors the lattice-level structures, including:
+
+- wormhole_channel/
+    Fidelity geometry
+    Coherence-length models
+    Traversal maps
+    ?-vector ethical binding
+    Coherence tunnel specification
+
+Additional lattice modules can be added alongside wormhole_channel
+to support future Aureon nervous-system expansions.
+"""
+
+from .wormhole_channel import (
+    WormholeTraversalMap,
+    default_aureon_map,
+    Channel,
+    Node,
+    TauVector,
+    TauBoundRoute,
+    TauVectorBinder,
+)

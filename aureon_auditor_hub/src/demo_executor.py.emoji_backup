@@ -1,0 +1,2 @@
+﻿# Demo deterministic executor
+print('Deterministic output: ' + str(42 * 42))
