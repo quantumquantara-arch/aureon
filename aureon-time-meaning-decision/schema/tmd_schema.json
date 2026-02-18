@@ -1,0 +1,50 @@
+﻿{
+  "$id": "https://aureon.org/tmd/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aureon TMD Core Schema",
+
+  "definitions": {
+
+    "Timestamp": {
+      "type": "object",
+      "required": ["clock_id", "sequence", "scope"],
+      "properties": {
+        "clock_id": { "type": "string" },
+        "sequence": { "type": "integer", "minimum": 0 },
+        "scope": { "type": "string" }
+      }
+    },
+
+    "Meaning": {
+      "type": "object",
+      "required": ["id", "event", "interpretation", "timestamp"],
+      "properties": {
+        "id": { "type": "string" },
+        "event": { "type": "string" },
+        "interpretation": { "type": "string" },
+        "timestamp": { "$ref": "#/definitions/Timestamp" }
+      }
+    },
+
+    "Decision": {
+      "type": "object",
+      "required": ["id", "ref", "action", "timestamp"],
+      "properties": {
+        "id": { "type": "string" },
+        "ref": { "type": "string" },
+        "action": { "type": "string" },
+        "timestamp": { "$ref": "#/definitions/Timestamp" }
+      }
+    },
+
+    "AuditNode": {
+      "type": "object",
+      "required": ["type", "value", "timestamp"],
+      "properties": {
+        "type": { "type": "string", "enum": ["event", "meaning", "decision"] },
+        "value": { "type": "object" },
+        "timestamp": { "$ref": "#/definitions/Timestamp" }
+      }
+    }
+  }
+}

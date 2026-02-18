@@ -1,0 +1,8 @@
+{
+  "type": "robot.sensor",
+  "sensor": "lidar",
+  "reading": {
+    "distance_m": 0.42,
+    "angle_deg": 17.5
+  }
+}

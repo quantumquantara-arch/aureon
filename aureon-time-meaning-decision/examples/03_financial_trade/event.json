@@ -1,0 +1,6 @@
+{
+  "type": "trade.order",
+  "symbol": "BTC-USD",
+  "side": "buy",
+  "quantity": 0.5
+}

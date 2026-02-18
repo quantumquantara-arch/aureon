@@ -1,0 +1,5 @@
+{
+  "action": "update-weights",
+  "module": "cognitive-lattice",
+  "reason": "coherence delta above threshold"
+}

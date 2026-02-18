@@ -1,0 +1,174 @@
+# TMD Foundation: Time–Meaning–Decision (REWRITE)
+
+## 1. Purpose
+
+Define a single formal system where every decision is:
+
+- anchored in real time,
+- justified by explicit meaning,
+- and auditable after the fact.
+
+Time, meaning, and action are not separate layers. They are one recorded structure.
+
+---
+
+## 2. Core Objects
+
+We define the Time–Meaning–Decision system as a tuple:
+
+\[
+\mathcal{S} = (T, M, D, C)
+\]
+
+- `T` — the time substrate  
+- `M` — the meaning substrate  
+- `D` — the decision set  
+- `C` — coherence constraints that must always hold
+
+### 2.1 Time substrate T
+
+`T` is a sequence of time events.
+
+Each time event `t` has:
+
+- `t.id` — unique identifier  
+- `t.civil` — external UTC timestamp (from a trusted clock)  
+- `t.logical` — monotonic counter per process or agent  
+- `t.epoch` — coarse phase label (e.g. `"episode_001"`)
+
+Time is append-only.  
+New events can be added; existing ones are never mutated.
+
+### 2.2 Meaning substrate M
+
+`M` is a directed graph of meaning nodes and edges.
+
+Each meaning node `m` has:
+
+- `m.id` — unique identifier  
+- `m.time_id` — reference into `T` (when this meaning was created)  
+- `m.type` ∈ {`goal`, `observation`, `rule`, `assumption`, `constraint`}  
+- `m.text` — human-readable statement  
+- `m.confidence` ∈ [0, 1] — model or human confidence  
+- `m.meta` — optional metadata (source, origin, tags)
+
+Edges between meaning nodes describe relations:
+
+- `supports`  
+- `contradicts`  
+- `refines`  
+- `depends_on`  
+- `caused_by`
+
+Each edge is a triple:
+
+\[
+(m_i, relation, m_j)
+\]
+
+### 2.3 Decision set D
+
+`D` is the set of decisions taken by agents or systems.
+
+Each decision `d` has:
+
+- `d.id` — unique identifier  
+- `d.time_id` — reference into `T` (when the decision was made)  
+- `d.agent_id` — identity of the decision-maker  
+- `d.action` — machine-readable description of what is done  
+- `d.input_meaning_ids` — list of `M` node ids used to justify the decision  
+- `d.outcome_meaning_ids` — list of `M` node ids later attached as outcomes (can start empty)
+
+Decisions are append-only.  
+Outcomes are attached by adding meaning nodes and linking them to `d`.
+
+### 2.4 Coherence layer C
+
+`C` is the set of invariants that must hold across `T`, `M`, and `D`.
+
+At minimum:
+
+1. Every meaning node `m` must reference a valid `time_id` in `T`.  
+2. Every decision `d` must reference at least one `goal` node in `d.input_meaning_ids`.  
+3. Outcomes of a decision are represented only as new meaning nodes linked by a `caused_by` relation.  
+4. No node or decision is deleted; corrections are expressed as new nodes with `refines` or `contradicts`.
+
+These invariants turn the system into a single structured audit trail:
+time → meaning → decision → outcome.
+
+---
+
+## 3. Core Invariants
+
+We state the core invariants more formally.
+
+### 3.1 Time-anchored meaning
+
+For every `m ∈ M` there exists a `t ∈ T` such that:
+
+\[
+m.time_id = t.id
+\]
+
+There are no meaning nodes without time.
+
+### 3.2 Meaning-anchored decisions
+
+For every `d ∈ D`:
+
+- `d.time_id` references some `t ∈ T`  
+- `d.input_meaning_ids` is non-empty  
+- at least one referenced meaning node has `type = goal`
+
+This prevents unmotivated actions.
+
+### 3.3 Outcome-anchored feedback
+
+For every `d ∈ D` and every `m_out ∈ M` in `d.outcome_meaning_ids`, there exists an edge:
+
+\[
+(m_out, caused\_by, d)
+\]
+
+Outcomes are always linked back to the decision that triggered them.
+
+### 3.4 Append-only history
+
+`T`, `M`, and `D` are append-only.
+
+- To correct a statement, create a new meaning node and relate it with `refines` or `contradicts`.  
+- To update a decision, create a new decision and link it to the prior one via a meaning node that describes the change.
+
+This preserves a full causal trace.
+
+---
+
+## 4. Why This Matters
+
+Most systems treat:
+
+- time as log metadata,  
+- meaning as unstructured text,  
+- decisions as isolated events.
+
+This design binds them together in one structure.
+
+Every action can be traced to:
+
+- when it was made,  
+- what it was supposed to mean,  
+- what it actually did.
+
+That is the minimal formal spine needed to study intelligence, ethics, and failure as one system instead of three separate concerns.
+
+---
+
+## 5. Next Steps
+
+- Define the concrete data model (tables or JSON schemas) that implement `T`, `M`, `D`, and `C`.  
+- Implement a small core library that can:
+  - create time events,  
+  - add meaning nodes,  
+  - record decisions,  
+  - attach outcomes,  
+  - and verify the invariants above.

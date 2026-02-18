@@ -1,0 +1,6 @@
+{
+  "event": {
+    "type": "user.login",
+    "agent": "demo"
+  }
+}

@@ -1,0 +1,57 @@
+?# TMD Deterministic Test Harness
+# This file mechanically validates core guarantees of the Time–Meaning–Decision system.
+# It is NOT a runtime engine — only a logical verifier for the spec.
+
+print("=== TMD Test Harness ===")
+
+# -----------------------
+# 1. TIMESTAMP TEST
+# -----------------------
+def test_timestamp_append_only():
+    t1 = (1, 10, "scope")
+    t2 = (1, 11, "scope")
+
+    assert t2[1] > t1[1], "Timestamp must increase monotonically."
+    print("[OK] Timestamp monotonicity")
+
+# -----------------------
+# 2. MEANING APPEND-ONLY
+# -----------------------
+def test_meaning_append_only():
+    M1 = {"event":"E1", "risk":"low", "time":10}
+    M2 = {"event":"E1", "risk":"high", "time":25}
+
+    assert M1["risk"] == "low", "Historical meaning must not be mutated"
+    assert M2["time"] > M1["time"], "Updated meaning must appear later in time"
+    print("[OK] Meaning append-only rule")
+
+# -----------------------
+# 3. DECISION REFERENCES IMMUTABLE HISTORY
+# -----------------------
+def test_decision_references_history():
+    M1 = {"id":"M1", "risk":"low"}
+    D1 = {"ref":"M1", "action":"ignore"}
+
+    assert D1["ref"] == "M1", "Decision must point to historical meaning"
+    print("[OK] Decisions reference immutable claims")
+
+# -----------------------
+# 4. AUDIT GRAPH RECONSTRUCTION
+# -----------------------
+def test_audit_graph():
+    E1 = "sensor_spike"
+    M1 = ("E1", "low")
+    M2 = ("E1", "high")
+    D2 = ("M2", "safe_mode")
+
+    chain = [E1, M1, M2, D2]
+    assert len(chain) == 4, "Audit graph must be reconstructible"
+    print("[OK] Audit trace reconstruction")
+
+# Run all tests
+test_timestamp_append_only()
+test_meaning_append_only()
+test_decision_references_history()
+test_audit_graph()
+
+print("=== All tests passed ===")

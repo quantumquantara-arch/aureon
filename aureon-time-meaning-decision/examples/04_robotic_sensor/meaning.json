@@ -1,0 +1,5 @@
+{
+  "classification": "obstacle-detected",
+  "distance_m": 0.42,
+  "priority": "high"
+}

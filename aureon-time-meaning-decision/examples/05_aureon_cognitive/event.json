@@ -1,0 +1,8 @@
+{
+  "type": "aureon.cognitive",
+  "signal": "pattern-recognition",
+  "content": {
+    "input": "high-dimensional semantic field",
+    "detected_shift": "coherence-increase"
+  }
+}

@@ -1,0 +1,68 @@
+?import json
+from datetime import datetime
+
+# === Timestamp object ==============================================
+def timestamp(clock_id="system", sequence=0, scope="local"):
+    return {
+        "clock_id": clock_id,
+        "sequence": sequence,
+        "scope": scope
+    }
+
+# === Event Recorder =================================================
+def record_event(event_id, payload, seq):
+    return {
+        "type": "event",
+        "event_id": event_id,
+        "payload": payload,
+        "timestamp": timestamp(sequence=seq)
+    }
+
+# === Meaning Model ==================================================
+def derive_meaning(event, seq):
+    interpretation = f"Meaning derived from {event['event_id']}"
+    return {
+        "type": "meaning",
+        "event": event["event_id"],
+        "interpretation": interpretation,
+        "timestamp": timestamp(sequence=seq)
+    }
+
+# === Decision Model ================================================
+def make_decision(meaning, seq):
+    action = f"Action chosen due to meaning: {meaning['interpretation']}"
+    return {
+        "type": "decision",
+        "ref": meaning["event"],
+        "action": action,
+        "timestamp": timestamp(sequence=seq)
+    }
+
+# === Audit Node =====================================================
+def audit_node(obj):
+    return {
+        "type": obj["type"],
+        "value": obj,
+        "timestamp": obj["timestamp"]
+    }
+
+# === End-to-end pipeline ============================================
+def run_pipeline(event_id, payload):
+    seq = 0
+
+    ev = record_event(event_id, payload, seq); seq += 1
+    meaning = derive_meaning(ev, seq); seq += 1
+    decision = make_decision(meaning, seq); seq += 1
+
+    audit_trail = [
+        audit_node(ev),
+        audit_node(meaning),
+        audit_node(decision)
+    ]
+
+    return audit_trail
+
+# === CLI Runner =====================================================
+if __name__ == "__main__":
+    example = run_pipeline("event.login", {"user": "demo"})
+    print(json.dumps(example, indent=2))

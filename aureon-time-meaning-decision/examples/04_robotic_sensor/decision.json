@@ -1,0 +1,5 @@
+{
+  "action": "avoid",
+  "maneuver": "swerve-left",
+  "reason": "Obstacle within collision threshold"
+}

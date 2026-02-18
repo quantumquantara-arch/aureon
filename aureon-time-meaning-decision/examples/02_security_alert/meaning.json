@@ -1,0 +1,5 @@
+{
+  "classification": "anomaly",
+  "reason": "IP address from unexpected region",
+  "risk_level": "high"
+}

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aureon-wormhole-channel"
+version = "1.0.0"
+description = "Aureon’s internal wormhole-coherence subsystem: fidelity geometry, τ-vector routing, and protected coherence tunnels for the Aureon OS."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "Aureon Planetary OS" }
+]
+
+[project.urls]
+Homepage = "https://github.com/quantumquantara-arch/aureon-wormhole-channel"
+Source = "https://github.com/quantumquantara-arch/aureon-wormhole-channel"
