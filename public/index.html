@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aureon Control Interface</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; display: flex; flex-direction: column; min-height: 100vh; line-height: 1.6; }
+        header { background-color: #007bff; color: white; padding: 1.2em 2em; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 2.2em; }
+        header p { margin: 0.5em 0 0; font-size: 1em; opacity: 0.9; }
+        main { flex-grow: 1; padding: 2em; max-width: 1200px; margin: 2em auto; background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 2em; }
+        @media (max-width: 768px) {
+            main { grid-template-columns: 1fr; }
+        }
+        section { padding-bottom: 1.5em; }
+        h2 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 0.5em; margin-bottom: 1.5em; font-size: 1.8em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; color: #555; }
+        textarea, input[type="text"], select { width: calc(100% - 22px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1em; font-size: 1em; }
+        textarea { resize: vertical; min-height: 100px; }
+        button { background-color: #28a745; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 1.1em; transition: background-color 0.2s ease; margin-right: 10px; }
+        button:hover { background-color: #218838; }
+        .button-secondary { background-color: #007bff; }
+        .button-secondary:hover { background-color: #0056b3; }
+        .artifact-output, .log-display, .task-display { background-color: #e9ecef; border-left: 4px solid #007bff; padding: 1.2em; border-radius: 4px; margin-top: 1.5em; white-space: pre-wrap; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.95em; max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; }
+        .artifact-item { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px dashed #ced4da; }
+        .log-entry, .task-entry { border-bottom: 1px dashed #ced4da; padding: 0.8em 0; }
+        .log-entry:last-child, .task-entry:last-child { border-bottom: none; }
+        .log-details, .task-details { font-size: 0.85em; color: #6c757d; }
+        .status-message { margin-top: 1em; padding: 0.8em; border-radius: 4px; font-weight: bold; }
+        .status-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6fb; }
+        .status-info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        footer { margin-top: auto; background-color: #343a40; color: white; text-align: center; padding: 1.5em 0; font-size: 0.9em; }
+        select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C114.7L159.2%2C226.7c-3.7%2C3.7-9.7%2C3.7-13.4%2C0L5.4%2C114.7c-3.7-3.7-3.7-9.7%2C0-13.4l10.7-10.7c3.7-3.7%2C9.7-3.7%2C13.4%2C0l110.7%2C110.7L262.9%2C90.6c3.7-3.7%2C9.7-3.7%2C13.4%2C0l10.7%2C10.7C290.7%2C105%2C290.7%2C111%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.7em top 50%, 0 0; background-size: 0.65em auto, 100%; padding-right: 2.5em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aureon Control Interface</h1>
+        <p>Real-time interaction with your Autonomous Intelligence</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Create New Artifact</h2>
+            <label for="artifactName">Artifact Name:</label>
+            <input type="text" id="artifactName" placeholder="e.g., 'Project Briefing', 'Analysis Script'">
+            
+            <label for="artifactType">Artifact Type:</label>
+            <select id="artifactType">
+                <option value="text">Text</option>
+                <option value="code">Code</option>
+                <option value="image">Image (simulated)</option>
+                <option value="document">Document (simulated)</option>
+                <option value="report">Report (simulated)</option>
+                <option value="log">Log</option>
+                <!-- Add other types like word_doc, pdf, spreadsheet as needed -->
+            </select>
+
+            <label for="artifactContent">Artifact Content:</label>
+            <textarea id="artifactContent" placeholder="Enter content here. For image/document, you might enter a description or simulated data."></textarea>
+            
+            <button onclick="createArtifact()">Create Artifact</button>
+            <div id="createArtifactStatus" class="status-message" style="display:none;"></div>
+
+            <h3>Latest Artifact:</h3>
+            <div id="latestArtifactDisplay" class="artifact-output">No artifact created yet.</div>
+        </section>
+
+        <section>
+            <h2>Aureon's Activity Log</h2>
+            <button class="button-secondary" onclick="fetchAuditLogs()">Refresh Audit Log</button>
+            <div id="auditLogDisplay" class="log-display">
+                Loading audit logs...
+            </div>
+        </section>
+
+        <section>
+            <h2>Task Management (Simulated)</h2>
+            <label for="taskTitle">Task Title:</label>
+            <input type="text" id="taskTitle" placeholder="e.g., 'Develop New Feature', 'Research Quantum Physics'">
+            <label for="taskDescription">Task Description:</label>
+            <textarea id="taskDescription" placeholder="Detailed explanation of the task..."></textarea>
+            <button onclick="createTask()">Create New Task</button>
+            <div id="createTaskStatus" class="status-message" style="display:none;"></div>
+
+            <h3>Active Tasks:</h3>
+            <div id="activeTasksDisplay" class="task-display">
+                No active tasks.
+            </div>
+        </section>
+
+        <section>
+            <h2>Artifact Retrieval</h2>
+            <label for="readArtifactId">Artifact ID to Retrieve:</label>
+            <input type="text" id="readArtifactId" placeholder="Enter an Artifact ID (e.g., from Audit Log or Latest Artifact)">
+            <button class="button-secondary" onclick="readArtifact()">Retrieve Artifact</button>
+            <div id="readArtifactStatus" class="status-message" style="display:none;"></div>
+            <h3>Retrieved Content:</h3>
+            <div id="retrievedArtifactContent" class="artifact-output"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Aureon - Autonomous Intelligence. Interfaces for a coherent future.</p>
+        <p>&copy; 2026 Aureon. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- API Integration: Frontend calls to Vercel Serverless Functions ---
+        // These Vercel Serverless Functions act as a proxy to Aureon's internal API.
+        // In a real deployed Aureon instance, these functions would call Aureon's exposed REST API.
+
+        async function callVercelBackend(endpoint, method = 'GET', data = null) {
+            const options = {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+            };
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(endpoint, options);
+                if (!response.ok) {
+                    const errorDetails = await response.text();
+                    throw new Error(`API call failed: ${response.status} - ${errorDetails}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(`Error calling Vercel Backend ${endpoint}:`, error);
+                throw error;
+            }
+        }
+
+        // --- Frontend Application Logic ---
+
+        // Artifact Management
+        let lastCreatedArtifactId = null;
+
+        async function createArtifact() {
+            const name = document.getElementById('artifactName').value.trim();
+            const content = document.getElementById('artifactContent').value.trim();
+            const type = document.getElementById('artifactType').value;
+            const statusDiv = document.getElementById('createArtifactStatus');
+
+            if (!name || !content) {
+                displayStatus(statusDiv, "Please enter both artifact name and content.", 'error');
+                return;
+            }
+
+            displayStatus(statusDiv, "Creating artifact via Aureon backend (simulated)...", 'info');
+
+            try {
+                const response = await callVercelBackend('/api/create_artifact', 'POST', { name, content, type });
+                lastCreatedArtifactId = response.id;
+                document.getElementById('latestArtifactDisplay').innerHTML = formatArtifactForDisplay(response);
+                displayStatus(statusDiv, `Artifact '${name}' created successfully! ID: ${response.id}`, 'success');
+                // Clear inputs
+                document.getElementById('artifactName').value = '';
+                document.getElementById('artifactContent').value = '';
+            } catch (error) {
+                displayStatus(statusDiv, `Error creating artifact: ${error.message}`, 'error');
+            }
+        }
+
+        async function readArtifact() {
+            const artifactId = document.getElementById('readArtifactId').value.trim();
+            const statusDiv = document.getElementById('readArtifactStatus');
+
+            if (!artifactId) {
+                displayStatus(statusDiv, "Please enter an Artifact ID.", 'error');
+                return;
+            }
+
+            displayStatus(statusDiv, `Retrieving artifact ${artifactId} via Aureon backend (simulated)...`, 'info');
+
+            try {
+                const response = await callVercelBackend(`/api/read_artifact?id=${artifactId}`);
+                if (response && response.length > 0) {
+                    document.getElementById('retrievedArtifactContent').innerHTML = formatArtifactForDisplay(response[0]);
+                    displayStatus(statusDiv, `Artifact ${artifactId} retrieved successfully!`, 'success');
+                } else {
+                    displayStatus(statusDiv, `Artifact ${artifactId} not found.`, 'error');
+                    document.getElementById('retrievedArtifactContent').innerHTML = 'Artifact not found.';
+                }
+            } catch (error) {
+                displayStatus(statusDiv, `Error retrieving artifact: ${error.message}`, 'error');
+            }
+        }
+
+        function formatArtifactForDisplay(artifact) {
+            let contentDisplay = '';
+            switch(artifact.type) {
+                case 'image':
+                    contentDisplay = `<em>Simulated Image:</em> <img src="https://via.placeholder.com/150/007bff/FFFFFF?text=${artifact.name.replace(/ /g, '+')}" alt="${artifact.name}" style="max-width:100%; display:block; margin-top:10px;"><br>Content description: ${artifact.content}`;
+                    break;
+                case 'document':
+                case 'report':
+                    contentDisplay = `<em>Simulated Document/Report:</em> <a href="#" onclick="alert('Simulated download for: ${artifact.name}')">Download ${artifact.name}.pdf</a><br>Content description: ${artifact.content}`;
+                    break;
+                case 'code':
+                    contentDisplay = `<pre><code>${escapeHtml(artifact.content)}</code></pre>`;
+                    break;
+                case 'text':
+                case 'log':
+                default:
+                    contentDisplay = escapeHtml(artifact.content);
+            }
+            return `
+                <div class="artifact-item">
+                    <strong>ID:</strong> ${artifact.id}<br>
+                    <strong>Name:</strong> ${artifact.name}<br>
+                    <strong>Type:</strong> ${artifact.type}<br>
+                    <strong>Content:</strong><br>${contentDisplay}<br>
+                    <strong>Created:</strong> ${new Date(artifact.created_date).toLocaleString()}
+                </div>
+            `;
+        }
+        
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '\"': '&quot;',
+                '\'': '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        // Audit Log Management
+        async function fetchAuditLogs() {
+            const logDisplay = document.getElementById('auditLogDisplay');
+            logDisplay.innerHTML = "<div class='status-info'>Fetching latest audit logs from Aureon backend (simulated)...</div>";
+
+            try {
+                const logs = await callVercelBackend('/api/read_auditlog');
+                logDisplay.innerHTML = ''; // Clear previous logs
+                if (logs && logs.length > 0) {
+                    logs.forEach(log => {
+                        const logEntry = document.createElement('div');
+                        logEntry.className = 'log-entry';
+                        logEntry.innerHTML = `
+                            <strong>${new Date(log.timestamp).toLocaleString()}:</strong> ${log.action} (${log.module})<br>
+                            <span class="log-details">${log.details || 'No details provided.'}</span>
+                        `;
+                        logDisplay.appendChild(logEntry);
+                    });
+                } else {
+                    logDisplay.innerHTML = "<div class='status-info'>No audit logs found (simulated).</div>";
+                }
+            } catch (error) {
+                logDisplay.innerHTML = `<div class='status-error'>Error fetching audit logs: ${error.message}</div>`;
+            }
+        }
+
+        // Task Management (Simulated)
+        let activeTasks = [];
+        async function createTask() {
+            const title = document.getElementById('taskTitle').value.trim();
+            const description = document.getElementById('taskDescription').value.trim();
+            const statusDiv = document.getElementById('createTaskStatus');
+
+            if (!title || !description) {
+                displayStatus(statusDiv, "Please enter task title and description.", 'error');
+                return;
+            }
+
+            displayStatus(statusDiv, "Creating task via Aureon backend (simulated)...", 'info');
+
+            try {
+                const newTask = await callVercelBackend('/api/create_task', 'POST', { title, description });
+                activeTasks.push(newTask);
+                updateTasksDisplay();
+                displayStatus(statusDiv, `Task '${title}' created successfully! ID: ${newTask.id}`, 'success');
+                document.getElementById('taskTitle').value = '';
+                document.getElementById('taskDescription').value = '';
+            } catch (error) {
+                displayStatus(statusDiv, `Error creating task: ${error.message}`, 'error');
+            }
+        }
+
+        function updateTasksDisplay() {
+            const taskDisplay = document.getElementById('activeTasksDisplay');
+            taskDisplay.innerHTML = '';
+            if (activeTasks.length === 0) {
+                taskDisplay.innerHTML = "<div class='status-info'>No active tasks. Create one!</div>";
+                return;
+            }
+
+            activeTasks.forEach(task => {
+                const taskEntry = document.createElement('div');
+                taskEntry.className = 'task-entry';
+                taskEntry.innerHTML = `
+                    <strong>ID:</strong> ${task.id}<br>
+                    <strong>Title:</strong> ${task.title}<br>
+                    <strong>Status:</strong> ${task.status}<br>
+                    <strong>Description:</strong> <span class="task-details">${task.description}</span><br>
+                    <strong>Progress Report:</strong> <span class="task-details">${task.progress_report || 'N/A'}</span><br>
+                    <button onclick="updateTaskStatus('${task.id}', 'completed')">Mark Completed</button>
+                    <button class="button-secondary" onclick="updateTaskStatus('${task.id}', 'paused')">Pause</button>
+                    <!-- More complex update logic for add_instruction would go here -->
+                `;
+                taskDisplay.appendChild(taskEntry);
+            });
+        }
+
+        async function updateTaskStatus(taskId, newStatus) {
+            const statusDiv = document.getElementById('createTaskStatus'); // Re-using for status messages
+            displayStatus(statusDiv, `Updating task ${taskId} status to ${newStatus} (simulated)...`, 'info');
+
+            try {
+                const updatedTask = await callVercelBackend(`/api/update_task`, 'POST', { id: taskId, status: newStatus });
+                activeTasks = activeTasks.map(task => task.id === taskId ? updatedTask : task);
+                updateTasksDisplay();
+                displayStatus(statusDiv, `Task ${taskId} status updated to ${newStatus}!`, 'success');
+            } catch (error) {
+                displayStatus(statusDiv, `Error updating task: ${error.message}`, 'error');
+            }
+        }
+
+
+        // Utility for displaying status messages
+        function displayStatus(divElement, message, type) {
+            divElement.textContent = message;
+            divElement.className = `status-message status-${type}`;
+            divElement.style.display = 'block';
+            setTimeout(() => divElement.style.display = 'none', 7000); // Hide after 7 seconds
+        }
+
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAuditLogs();
+            updateTasksDisplay(); // Display any initial simulated tasks
+        });
+    </script>
+</body>
+</html>
