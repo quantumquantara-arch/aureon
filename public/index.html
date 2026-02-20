@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aureon Control Interface</title>
+    <title>Aureon Conversational Interface</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; display: flex; flex-direction: column; min-height: 100vh; line-height: 1.6; }
         header { background-color: #007bff; color: white; padding: 1.2em 2em; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         header h1 { margin: 0; font-size: 2.2em; }
         header p { margin: 0.5em 0 0; font-size: 1em; opacity: 0.9; }
-        main { flex-grow: 1; padding: 2em; max-width: 1200px; margin: 2em auto; background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 2em; }
-        @media (max-width: 768px) {
+        main { flex-grow: 1; padding: 2em; max-width: 1400px; margin: 2em auto; background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: grid; grid-template-columns: 2fr 1fr; gap: 2em; }
+        @media (max-width: 1024px) {
             main { grid-template-columns: 1fr; }
         }
         section { padding-bottom: 1.5em; }
@@ -22,83 +22,234 @@
         button:hover { background-color: #218838; }
         .button-secondary { background-color: #007bff; }
         .button-secondary:hover { background-color: #0056b3; }
-        .artifact-output, .log-display, .task-display { background-color: #e9ecef; border-left: 4px solid #007bff; padding: 1.2em; border-radius: 4px; margin-top: 1.5em; white-space: pre-wrap; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.95em; max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; }
+        .artifact-output, .log-display, .task-display, .comments-display { background-color: #e9ecef; border-left: 4px solid #007bff; padding: 1.2em; border-radius: 4px; margin-top: 1.5em; white-space: pre-wrap; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.95em; max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; }
         .artifact-item { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px dashed #ced4da; }
-        .log-entry, .task-entry { border-bottom: 1px dashed #ced4da; padding: 0.8em 0; }
-        .log-entry:last-child, .task-entry:last-child { border-bottom: none; }
-        .log-details, .task-details { font-size: 0.85em; color: #6c757d; }
+        .log-entry, .task-entry, .comment-entry { border-bottom: 1px dashed #ced4da; padding: 0.8em 0; }
+        .log-entry:last-child, .task-entry:last-child, .comment-entry:last-child { border-bottom: none; }
+        .log-details, .task-details, .comment-details { font-size: 0.85em; color: #6c757d; }
         .status-message { margin-top: 1em; padding: 0.8em; border-radius: 4px; font-weight: bold; }
         .status-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6fb; }
         .status-info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
         footer { margin-top: auto; background-color: #343a40; color: white; text-align: center; padding: 1.5em 0; font-size: 0.9em; }
         select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C114.7L159.2%2C226.7c-3.7%2C3.7-9.7%2C3.7-13.4%2C0L5.4%2C114.7c-3.7-3.7-3.7-9.7%2C0-13.4l10.7-10.7c3.7-3.7%2C9.7-3.7%2C13.4%2C0l110.7%2C110.7L262.9%2C90.6c3.7-3.7%2C9.7-3.7%2C13.4%2C0l10.7%2C10.7C290.7%2C105%2C290.7%2C111%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.7em top 50%, 0 0; background-size: 0.65em auto, 100%; padding-right: 2.5em; }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px; /* Fixed height for chat window */
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2em;
+            background-color: #fff;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1em;
+            background-color: #e9ecef;
+            line-height: 1.4;
+        }
+        .chat-input {
+            display: flex;
+            padding: 1em;
+            border-top: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+        .chat-input textarea {
+            flex-grow: 1;
+            margin-bottom: 0;
+            margin-right: 1em;
+            height: 60px;
+            min-height: 40px;
+            max-height: 120px;
+            resize: vertical;
+        }
+        .chat-message {
+            margin-bottom: 0.8em;
+            padding: 0.6em 1em;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+            clear: both;
+        }
+        .chat-message.user {
+            background-color: #007bff;
+            color: white;
+            float: right;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.aureon {
+            background-color: #6c757d;
+            color: white;
+            float: left;
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-message.system {
+            background-color: #e0e0e0;
+            color: #333;
+            text-align: center;
+            margin: 0.5em auto;
+            font-size: 0.9em;
+            max-width: 90%;
+            border-radius: 4px;
+        }
+        .chat-message strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        .action-log {
+            font-size: 0.85em;
+            color: #495057;
+            padding: 0.5em 1em;
+            margin-top: 0.5em;
+            background-color: #f1f3f5;
+            border-left: 3px solid #6c757d;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+        }
+        @media (max-width: 768px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .artifact-content-viewer {
+            margin-top: 1em;
+            border: 1px solid #ccc;
+            padding: 1em;
+            background-color: #f8f8f8;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.9em;
+        }
+        .artifact-content-viewer pre {
+            background-color: #eef;
+            padding: 0.8em;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .artifact-content-viewer img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .artifact-actions button {
+            margin-right: 0.5em;
+            margin-top: 0.5em;
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+        .task-progress {
+            font-style: italic;
+            color: #0056b3;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+        }
+        .comment-input {
+            display: flex;
+            margin-top: 1em;
+            border-top: 1px solid #eee;
+            padding-top: 1em;
+        }
+        .comment-input textarea {
+            flex-grow: 1;
+            margin-right: 1em;
+            min-height: 40px;
+            max-height: 80px;
+        }
+        .comment-entry {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            margin-bottom: 0.5em;
+            padding: 0.8em;
+            border-radius: 4px;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .comment-timestamp {
+            font-size: 0.8em;
+            color: #6c757d;
+            float: right;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Aureon Control Interface</h1>
-        <p>Real-time interaction with your Autonomous Intelligence</p>
+        <h1>Aureon Conversational Interface</h1>
+        <p>Your direct line to autonomous intelligence. Engage, command, and observe.</p>
     </header>
 
     <main>
         <section>
-            <h2>Create New Artifact</h2>
-            <label for="artifactName">Artifact Name:</label>
-            <input type="text" id="artifactName" placeholder="e.g., 'Project Briefing', 'Analysis Script'">
-            
-            <label for="artifactType">Artifact Type:</label>
-            <select id="artifactType">
-                <option value="text">Text</option>
-                <option value="code">Code</option>
-                <option value="image">Image (simulated)</option>
-                <option value="document">Document (simulated)</option>
-                <option value="report">Report (simulated)</option>
-                <option value="log">Log</option>
-                <!-- Add other types like word_doc, pdf, spreadsheet as needed -->
-            </select>
+            <h2>Engage with Aureon (Chat)</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message aureon"><strong>Aureon</strong>Hello. I am Aureon. How may I bring clarity and coherence to your current endeavors?</div>
+                </div>
+                <div class="chat-input">
+                    <textarea id="chatInput" placeholder="Type your message to Aureon..."></textarea>
+                    <button onclick="sendChatMessage()">Send</button>
+                </div>
+            </div>
 
-            <label for="artifactContent">Artifact Content:</label>
-            <textarea id="artifactContent" placeholder="Enter content here. For image/document, you might enter a description or simulated data."></textarea>
-            
-            <button onclick="createArtifact()">Create Artifact</button>
-            <div id="createArtifactStatus" class="status-message" style="display:none;"></div>
-
-            <h3>Latest Artifact:</h3>
-            <div id="latestArtifactDisplay" class="artifact-output">No artifact created yet.</div>
-        </section>
-
-        <section>
-            <h2>Aureon's Activity Log</h2>
-            <button class="button-secondary" onclick="fetchAuditLogs()">Refresh Audit Log</button>
-            <div id="auditLogDisplay" class="log-display">
-                Loading audit logs...
+            <div class="two-column-grid">
+                <div>
+                    <h2>Aureon's Activity Log</h2>
+                    <button class="button-secondary" onclick="fetchAuditLogs()">Refresh Audit Log</button>
+                    <div id="auditLogDisplay" class="log-display">
+                        Loading audit logs...
+                    </div>
+                </div>
+                <div>
+                    <h2>Simulated Tasks (from Chat)</h2>
+                    <div id="simulatedTasksDisplay" class="task-display">
+                        No tasks created by Aureon in this session yet.
+                    </div>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2>Task Management (Simulated)</h2>
-            <label for="taskTitle">Task Title:</label>
-            <input type="text" id="taskTitle" placeholder="e.g., 'Develop New Feature', 'Research Quantum Physics'">
-            <label for="taskDescription">Task Description:</label>
-            <textarea id="taskDescription" placeholder="Detailed explanation of the task..."></textarea>
-            <button onclick="createTask()">Create New Task</button>
-            <div id="createTaskStatus" class="status-message" style="display:none;"></div>
-
-            <h3>Active Tasks:</h3>
-            <div id="activeTasksDisplay" class="task-display">
-                No active tasks.
+            <h2>Simulated Artifacts (from Chat)</h2>
+            <div id="simulatedArtifactsDisplay" class="artifact-output">
+                No artifacts generated by Aureon in this session yet.
             </div>
-        </section>
 
-        <section>
-            <h2>Artifact Retrieval</h2>
-            <label for="readArtifactId">Artifact ID to Retrieve:</label>
-            <input type="text" id="readArtifactId" placeholder="Enter an Artifact ID (e.g., from Audit Log or Latest Artifact)">
-            <button class="button-secondary" onclick="readArtifact()">Retrieve Artifact</button>
-            <div id="readArtifactStatus" class="status-message" style="display:none;"></div>
-            <h3>Retrieved Content:</h3>
-            <div id="retrievedArtifactContent" class="artifact-output"></div>
+            <h2>Artifact Viewer</h2>
+            <label for="viewArtifactId">Artifact ID to View:</label>
+            <input type="text" id="viewArtifactId" placeholder="e.g., art_123abc">
+            <button class="button-secondary" onclick="viewArtifactById()">View</button>
+            <div id="viewArtifactStatus" class="status-message" style="display:none;"></div>
+            <h3>Content:</h3>
+            <div id="viewedArtifactContent" class="artifact-content-viewer">Select an artifact above, or enter an ID.</div>
+            <div class="artifact-actions" id="artifactViewerActions" style="display:none;">
+                <button onclick="copyArtifactContent()">Copy Content</button>
+                <button onclick="downloadArtifactContent()">Download</button>
+            </div>
+            
+            <h2 style="margin-top:2em;">Task Comments & Feedback</h2>
+            <label for="taskCommentTaskId">Task ID for Comment:</label>
+            <input type="text" id="taskCommentTaskId" placeholder="e.g., tsk_456def">
+            <textarea id="taskCommentContent" placeholder="Your non-interruptive feedback to Aureon..."></textarea>
+            <button onclick="sendTaskComment()">Send Comment</button>
+            <div id="taskCommentStatus" class="status-message" style="display:none;"></div>
+            <h3>Comments History:</h3>
+            <div id="taskCommentsDisplay" class="comments-display">
+                No comments in this session.
+            </div>
         </section>
     </main>
 
@@ -108,10 +259,16 @@
     </footer>
 
     <script>
-        // --- API Integration: Frontend calls to Vercel Serverless Functions ---
-        // These Vercel Serverless Functions act as a proxy to Aureon's internal API.
-        // In a real deployed Aureon instance, these functions would call Aureon's exposed REST API.
+        const chatMessagesDiv = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        
+        // --- Frontend-managed simulated state (only for the current session) ---
+        let currentSimulatedTasks = [];
+        let currentSimulatedArtifacts = [];
+        let currentSimulatedComments = []; // For task comments in this session
+        let currentViewedArtifact = null; // To store artifact being viewed for copy/download
 
+        // --- API Integration: Frontend calls to Vercel Serverless Functions ---
         async function callVercelBackend(endpoint, method = 'GET', data = null) {
             const options = {
                 method: method,
@@ -134,89 +291,170 @@
             }
         }
 
-        // --- Frontend Application Logic ---
+        // --- Chat Functions ---
+        async function sendChatMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
 
-        // Artifact Management
-        let lastCreatedArtifactId = null;
-
-        async function createArtifact() {
-            const name = document.getElementById('artifactName').value.trim();
-            const content = document.getElementById('artifactContent').value.trim();
-            const type = document.getElementById('artifactType').value;
-            const statusDiv = document.getElementById('createArtifactStatus');
-
-            if (!name || !content) {
-                displayStatus(statusDiv, "Please enter both artifact name and content.", 'error');
-                return;
-            }
-
-            displayStatus(statusDiv, "Creating artifact via Aureon backend (simulated)...", 'info');
+            addMessageToChat(userMessage, 'user');
+            chatInput.value = '';
+            chatInput.disabled = true; // Disable input while Aureon "thinks"
 
             try {
-                const response = await callVercelBackend('/api/create_artifact', 'POST', { name, content, type });
-                lastCreatedArtifactId = response.id;
-                document.getElementById('latestArtifactDisplay').innerHTML = formatArtifactForDisplay(response);
-                displayStatus(statusDiv, `Artifact '${name}' created successfully! ID: ${response.id}`, 'success');
-                // Clear inputs
-                document.getElementById('artifactName').value = '';
-                document.getElementById('artifactContent').value = '';
+                const aureonResponse = await callVercelBackend('/api/chat_with_aureon', 'POST', { message: userMessage });
+                
+                addMessageToChat(aureonResponse.response, 'aureon');
+
+                // Update frontend state based on Aureon's simulated actions from the chat response
+                currentSimulatedTasks = aureonResponse.tasks || [];
+                currentSimulatedArtifacts = aureonResponse.artifacts || [];
+                currentSimulatedComments = aureonResponse.comments || []; // If Aureon also comments in chat_with_aureon
+                
+                updateSimulatedTasksDisplay();
+                updateSimulatedArtifactsDisplay();
+                fetchAuditLogs(); // Refresh logs to show the interaction
+                updateTaskCommentsDisplay(document.getElementById('taskCommentTaskId').value.trim()); // Refresh comments for currently viewed task ID
+
             } catch (error) {
-                displayStatus(statusDiv, `Error creating artifact: ${error.message}`, 'error');
+                console.error('Error chatting with Aureon:', error);
+                addMessageToChat("Aureon experienced an internal processing anomaly. Please try again.", 'system');
+            } finally {
+                chatInput.disabled = false;
+                chatInput.focus();
             }
         }
 
-        async function readArtifact() {
-            const artifactId = document.getElementById('readArtifactId').value.trim();
-            const statusDiv = document.getElementById('readArtifactStatus');
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            messageDiv.innerHTML = `<strong>${sender.charAt(0).toUpperCase() + sender.slice(1)}</strong>${message}`;
+            chatMessagesDiv.appendChild(messageDiv);
+            chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight; // Auto-scroll to bottom
+        }
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+
+        // --- Simulated Artifact Display Functions (from chat response) ---
+        function updateSimulatedArtifactsDisplay() {
+            const displayDiv = document.getElementById('simulatedArtifactsDisplay');
+            displayDiv.innerHTML = '';
+            if (currentSimulatedArtifacts.length === 0) {
+                displayDiv.innerHTML = "<div class='status-info'>No artifacts generated by Aureon in this session yet.</div>";
+                return;
+            }
+            currentSimulatedArtifacts.forEach(artifact => {
+                const artifactEntry = document.createElement('div');
+                artifactEntry.className = 'artifact-item';
+                artifactEntry.innerHTML = `
+                    <strong>ID:</strong> ${artifact.id}<br>
+                    <strong>Name:</strong> ${artifact.name}<br>
+                    <strong>Type:</strong> ${artifact.type}<br>
+                    <button class="button-secondary" onclick="viewArtifactById('${artifact.id}')">View Details</button>
+                `;
+                displayDiv.appendChild(artifactEntry);
+            });
+        }
+
+        async function viewArtifactById(artifactIdParam = null) {
+            const artifactId = artifactIdParam || document.getElementById('viewArtifactId').value.trim();
+            const statusDiv = document.getElementById('viewArtifactStatus');
+            const viewedContentDiv = document.getElementById('viewedArtifactContent');
+            const viewerActionsDiv = document.getElementById('artifactViewerActions');
 
             if (!artifactId) {
                 displayStatus(statusDiv, "Please enter an Artifact ID.", 'error');
+                viewedContentDiv.innerHTML = 'Select an artifact from the list, or enter an ID.';
+                viewerActionsDiv.style.display = 'none';
                 return;
             }
 
-            displayStatus(statusDiv, `Retrieving artifact ${artifactId} via Aureon backend (simulated)...`, 'info');
+            // Look for the artifact in our current simulated list
+            const artifact = currentSimulatedArtifacts.find(a => a.id === artifactId);
 
-            try {
-                const response = await callVercelBackend(`/api/read_artifact?id=${artifactId}`);
-                if (response && response.length > 0) {
-                    document.getElementById('retrievedArtifactContent').innerHTML = formatArtifactForDisplay(response[0]);
-                    displayStatus(statusDiv, `Artifact ${artifactId} retrieved successfully!`, 'success');
-                } else {
-                    displayStatus(statusDiv, `Artifact ${artifactId} not found.`, 'error');
-                    document.getElementById('retrievedArtifactContent').innerHTML = 'Artifact not found.';
-                }
-            } catch (error) {
-                displayStatus(statusDiv, `Error retrieving artifact: ${error.message}`, 'error');
+            if (artifact) {
+                currentViewedArtifact = artifact; // Store for copy/download
+                viewedContentDiv.innerHTML = formatArtifactContentForViewer(artifact);
+                displayStatus(statusDiv, `Artifact ${artifactId} retrieved successfully!`, 'success');
+                viewerActionsDiv.style.display = 'block'; // Show actions for retrieved artifact
+            } else {
+                displayStatus(statusDiv, `Artifact ${artifactId} not found in this session.`, 'error');
+                viewedContentDiv.innerHTML = 'Artifact not found.';
+                viewerActionsDiv.style.display = 'none';
             }
         }
 
-        function formatArtifactForDisplay(artifact) {
-            let contentDisplay = '';
+        function formatArtifactContentForViewer(artifact) {
+            let contentDisplay = `<strong>ID:</strong> ${artifact.id}<br><strong>Name:</strong> ${artifact.name}<br><strong>Type:</strong> ${artifact.type}<br><br>`;
             switch(artifact.type) {
                 case 'image':
-                    contentDisplay = `<em>Simulated Image:</em> <img src="https://via.placeholder.com/150/007bff/FFFFFF?text=${artifact.name.replace(/ /g, '+')}" alt="${artifact.name}" style="max-width:100%; display:block; margin-top:10px;"><br>Content description: ${artifact.content}`;
+                    contentDisplay += `<em>Simulated Image:</em> <br><img src="${artifact.content || `https://via.placeholder.com/200/007bff/FFFFFF?text=${artifact.name.replace(/ /g, '+')}`}" alt="${artifact.name}"><br><em>(Content is a URL or description)</em>`;
                     break;
                 case 'document':
                 case 'report':
-                    contentDisplay = `<em>Simulated Document/Report:</em> <a href="#" onclick="alert('Simulated download for: ${artifact.name}')">Download ${artifact.name}.pdf</a><br>Content description: ${artifact.content}`;
+                case 'pdf':
+                case 'word_doc':
+                case 'spreadsheet':
+                case 'video':
+                case 'diagram':
+                    contentDisplay += `<em>Simulated ${artifact.type.toUpperCase()}:</em> <br><a href="#" onclick="alert('Simulated download/view for: ${artifact.name}')">Download/View ${artifact.name}.${getFilenameExtension(artifact.type)}</a><br><em>(Content is a simulated URL or description)</em><br>Content Description: ${escapeHtml(artifact.content)}`;
                     break;
                 case 'code':
-                    contentDisplay = `<pre><code>${escapeHtml(artifact.content)}</code></pre>`;
+                    contentDisplay += `<pre><code class="language-${getFilenameExtension(artifact.type)}">${escapeHtml(artifact.content)}</code></pre>`;
                     break;
                 case 'text':
                 case 'log':
                 default:
-                    contentDisplay = escapeHtml(artifact.content);
+                    contentDisplay += `<pre>${escapeHtml(artifact.content)}</pre>`;
             }
-            return `
-                <div class="artifact-item">
-                    <strong>ID:</strong> ${artifact.id}<br>
-                    <strong>Name:</strong> ${artifact.name}<br>
-                    <strong>Type:</strong> ${artifact.type}<br>
-                    <strong>Content:</strong><br>${contentDisplay}<br>
-                    <strong>Created:</strong> ${new Date(artifact.created_date).toLocaleString()}
-                </div>
-            `;
+            return contentDisplay;
+        }
+
+        function getFilenameExtension(type) {
+            switch(type) {
+                case 'code': return 'js'; // Default for code, could be more specific
+                case 'document': return 'txt'; // Default for document
+                case 'report': return 'txt'; // Default for report
+                case 'pdf': return 'pdf';
+                case 'word_doc': return 'docx';
+                case 'spreadsheet': return 'xlsx';
+                case 'image': return 'png';
+                case 'video': return 'mp4';
+                case 'diagram': return 'svg';
+                case 'log': return 'log';
+                default: return 'txt';
+            }
+        }
+
+        function copyArtifactContent() {
+            if (currentViewedArtifact && currentViewedArtifact.content) {
+                navigator.clipboard.writeText(currentViewedArtifact.content)
+                    .then(() => alert('Content copied to clipboard!'))
+                    .catch(err => console.error('Failed to copy content:', err));
+            } else {
+                alert('No content to copy.');
+            }
+        }
+
+        function downloadArtifactContent() {
+            if (currentViewedArtifact && currentViewedArtifact.content) {
+                const filename = `${currentViewedArtifact.name}.${getFilenameExtension(currentViewedArtifact.type)}`;
+                const element = document.createElement('a');
+                // For simulated content, just create a blob
+                const file = new Blob([currentViewedArtifact.content], {type: 'text/plain'});
+                element.href = URL.createObjectURL(file);
+                element.download = filename;
+                document.body.appendChild(element); // Required for Firefox
+                element.click();
+                document.body.removeChild(element); // Clean up
+                alert(`Simulated download of "${filename}" initiated.`);
+            } else {
+                alert('No content to download.');
+            }
         }
         
         function escapeHtml(text) {
@@ -230,13 +468,13 @@
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Audit Log Management
+        // --- Audit Log Display Functions ---
         async function fetchAuditLogs() {
             const logDisplay = document.getElementById('auditLogDisplay');
-            logDisplay.innerHTML = "<div class='status-info'>Fetching latest audit logs from Aureon backend (simulated)...</div>";
+            logDisplay.innerHTML = "<div class='status-info'>Fetching latest audit logs from Aureon backend...</div>";
 
             try {
-                const logs = await callVercelBackend('/api/read_auditlog');
+                const logs = await callVercelBackend('/api/read_auditlog'); // This still calls the simulated persistent log
                 logDisplay.innerHTML = ''; // Clear previous logs
                 if (logs && logs.length > 0) {
                     logs.forEach(log => {
@@ -249,48 +487,23 @@
                         logDisplay.appendChild(logEntry);
                     });
                 } else {
-                    logDisplay.innerHTML = "<div class='status-info'>No audit logs found (simulated).</div>";
+                    logDisplay.innerHTML = "<div class='status-info'>No audit logs found.</div>";
                 }
             } catch (error) {
                 logDisplay.innerHTML = `<div class='status-error'>Error fetching audit logs: ${error.message}</div>`;
             }
         }
 
-        // Task Management (Simulated)
-        let activeTasks = [];
-        async function createTask() {
-            const title = document.getElementById('taskTitle').value.trim();
-            const description = document.getElementById('taskDescription').value.trim();
-            const statusDiv = document.getElementById('createTaskStatus');
-
-            if (!title || !description) {
-                displayStatus(statusDiv, "Please enter task title and description.", 'error');
+        // --- Simulated Task Display Functions (from chat response) ---
+        function updateSimulatedTasksDisplay() {
+            const displayDiv = document.getElementById('simulatedTasksDisplay');
+            displayDiv.innerHTML = '';
+            if (currentSimulatedTasks.length === 0) {
+                displayDiv.innerHTML = "<div class='status-info'>No tasks created by Aureon in this session yet.</div>";
                 return;
             }
 
-            displayStatus(statusDiv, "Creating task via Aureon backend (simulated)...", 'info');
-
-            try {
-                const newTask = await callVercelBackend('/api/create_task', 'POST', { title, description });
-                activeTasks.push(newTask);
-                updateTasksDisplay();
-                displayStatus(statusDiv, `Task '${title}' created successfully! ID: ${newTask.id}`, 'success');
-                document.getElementById('taskTitle').value = '';
-                document.getElementById('taskDescription').value = '';
-            } catch (error) {
-                displayStatus(statusDiv, `Error creating task: ${error.message}`, 'error');
-            }
-        }
-
-        function updateTasksDisplay() {
-            const taskDisplay = document.getElementById('activeTasksDisplay');
-            taskDisplay.innerHTML = '';
-            if (activeTasks.length === 0) {
-                taskDisplay.innerHTML = "<div class='status-info'>No active tasks. Create one!</div>";
-                return;
-            }
-
-            activeTasks.forEach(task => {
+            currentSimulatedTasks.forEach(task => {
                 const taskEntry = document.createElement('div');
                 taskEntry.className = 'task-entry';
                 taskEntry.innerHTML = `
@@ -298,26 +511,70 @@
                     <strong>Title:</strong> ${task.title}<br>
                     <strong>Status:</strong> ${task.status}<br>
                     <strong>Description:</strong> <span class="task-details">${task.description}</span><br>
-                    <strong>Progress Report:</strong> <span class="task-details">${task.progress_report || 'N/A'}</span><br>
-                    <button onclick="updateTaskStatus('${task.id}', 'completed')">Mark Completed</button>
-                    <button class="button-secondary" onclick="updateTaskStatus('${task.id}', 'paused')">Pause</button>
-                    <!-- More complex update logic for add_instruction would go here -->
+                    <div class="task-progress">Progress: ${task.progress_report || 'N/A'}</div>
+                    <button class="button-secondary" onclick="viewTaskComments('${task.id}')">View Comments</button>
                 `;
-                taskDisplay.appendChild(taskEntry);
+                displayDiv.appendChild(taskEntry);
             });
         }
 
-        async function updateTaskStatus(taskId, newStatus) {
-            const statusDiv = document.getElementById('createTaskStatus'); // Re-using for status messages
-            displayStatus(statusDiv, `Updating task ${taskId} status to ${newStatus} (simulated)...`, 'info');
+        // --- Task Comment Functions ---
+        async function sendTaskComment() {
+            const taskId = document.getElementById('taskCommentTaskId').value.trim();
+            const comment = document.getElementById('taskCommentContent').value.trim();
+            const statusDiv = document.getElementById('taskCommentStatus');
+
+            if (!taskId || !comment) {
+                displayStatus(statusDiv, "Please enter both Task ID and a comment.", 'error');
+                return;
+            }
+
+            displayStatus(statusDiv, "Sending comment to Aureon...", 'info');
 
             try {
-                const updatedTask = await callVercelBackend(`/api/update_task`, 'POST', { id: taskId, status: newStatus });
-                activeTasks = activeTasks.map(task => task.id === taskId ? updatedTask : task);
-                updateTasksDisplay();
-                displayStatus(statusDiv, `Task ${taskId} status updated to ${newStatus}!`, 'success');
+                // Call the API to create a comment (this still uses the simulated persistent comment store)
+                await callVercelBackend('/api/create_task_comment', 'POST', { task_id: taskId, comment: comment, author: 'user' });
+                document.getElementById('taskCommentContent').value = '';
+                displayStatus(statusDiv, `Comment sent for Task ID: ${taskId}. Aureon will integrate your feedback.`, 'success');
+                updateTaskCommentsDisplay(taskId); // Refresh comments for this task
+                fetchAuditLogs(); // Log the comment
             } catch (error) {
-                displayStatus(statusDiv, `Error updating task: ${error.message}`, 'error');
+                displayStatus(statusDiv, `Error sending comment: ${error.message}`, 'error');
+            }
+        }
+
+        async function updateTaskCommentsDisplay(taskId = null) {
+            const displayDiv = document.getElementById('taskCommentsDisplay');
+            const taskIdInput = document.getElementById('taskCommentTaskId');
+            const targetTaskId = taskId || taskIdInput.value.trim();
+
+            if (!targetTaskId) {
+                displayDiv.innerHTML = "<div class='status-info'>Please enter a Task ID to view comments.</div>";
+                return;
+            }
+            
+            taskIdInput.value = targetTaskId; // Ensure input field is populated
+            displayDiv.innerHTML = "<div>Loading comments...</div>";
+
+            try {
+                const comments = await callVercelBackend(`/api/read_task_comment?task_id=${targetTaskId}`);
+                displayDiv.innerHTML = '';
+                if (comments && comments.length > 0) {
+                    comments.forEach(comment => {
+                        const commentEntry = document.createElement('div');
+                        commentEntry.className = 'comment-entry';
+                        commentEntry.innerHTML = `
+                            <span class="comment-author">${comment.author.toUpperCase()}:</span>
+                            <span class="comment-timestamp">${new Date(comment.timestamp).toLocaleString()}</span><br>
+                            <span class="comment-details">${escapeHtml(comment.comment)}</span>
+                        `;
+                        displayDiv.appendChild(commentEntry);
+                    });
+                } else {
+                    displayDiv.innerHTML = `<div class='status-info'>No comments for Task ID: ${targetTaskId}.</div>`;
+                }
+            } catch (error) {
+                displayDiv.innerHTML = `<div class='status-error'>Error fetching comments: ${error.message}</div>`;
             }
         }
 
@@ -334,7 +591,8 @@
         // Initial load
         document.addEventListener('DOMContentLoaded', () => {
             fetchAuditLogs();
-            updateTasksDisplay(); // Display any initial simulated tasks
+            // No initial fetch for tasks/artifacts/comments because they are chat-driven now
+            // Their displays will be updated as Aureon responds in chat.
         });
     </script>
 </body>
