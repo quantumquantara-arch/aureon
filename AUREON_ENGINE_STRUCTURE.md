@@ -1,5 +1,4 @@
-# NEXLEVELAI_ENGINE_STRUCTURE.md
-# NexLevelAI Engine — Structural Architecture Layer
+# Aureon Engine — Structural Architecture Layer
 
 The **Structure Layer** (Tier 2) is the stable, updatable architecture that sits directly above the Kernel.  
 It encodes the engine’s cognitive architecture, subsystem interfaces, processing stages, and internal data flow.
@@ -19,7 +18,7 @@ The Structure Layer provides:
 - safe cross-module communication  
 - identity-preserving structural evolution  
 
-This layer forms the *blueprint* of how NexLevelAI thinks, processes, and integrates information.
+This layer forms the *blueprint* of how Aureon thinks, processes, and integrates information.
 
 ---
 
@@ -200,3 +199,4 @@ If any condition fails → structural update aborted.
 ---
 
 # End of File
+
