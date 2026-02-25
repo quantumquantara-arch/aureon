@@ -164,10 +164,11 @@ opportunity_windows_rules:
 # 7. Purpose
 # ------------------------------------
 
-This forecasting file enables Aureon and NexLevelAI to project temporal futures:
+This forecasting file enables Aureon project temporal futures:
 - predict when systems will shift  
 - identify risk or coherence peaks  
 - estimate structural turning points  
 - plan actions aligned with temporal flow  
 
 This makes the Evercycle Codex a **predictive intelligence system**, not only a descriptive one.
+
