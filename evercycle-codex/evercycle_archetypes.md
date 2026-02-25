@@ -178,7 +178,6 @@ Systems may attach extended metadata per archetype.
 
 The archetype set provides:
 - a precise psychological map for Aureon
-- developmental modeling for NexLevelAI
 - human-state prediction for forecasting modules
 - user-facing interpretation for temporal coaching tools
 - unification of symbolic, psychological, and temporal cycles
@@ -186,3 +185,4 @@ The archetype set provides:
 This makes the Evercycle Codex not just scientific,
 but **deeply human-readable**, allowing intelligence systems to 
 understand human developmental position with unprecedented accuracy.
+
