@@ -1,0 +1,5 @@
+﻿# -*- coding: utf-8 -*-
+# AUREON Laptop Agent Runner (bootstrap)
+
+if __name__ == '__main__':
+    print('AUREON Laptop Agent runner initialized')

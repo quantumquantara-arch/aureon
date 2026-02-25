@@ -1,0 +1,28 @@
+{
+  "runtime_manifest_version": "1.0",
+  "agent": "ASIOS Local Agent",
+  "entrypoint": "run_asios_agent.py",
+  "supported_types": [
+    "LAPTOP_FS",
+    "FINANCE_PORTFOLIO",
+    "FINANCE_ORDER"
+  ],
+  "environments": ["DEV", "STAGING"],
+  "log_path": "asios_log.txt",
+  "execution_model": "deterministic",
+  "validation": {
+    "schema_version_required": true,
+    "hash_check_required": true,
+    "restricted_paths": [
+      "core_deterministic/",
+      "system/",
+      "boot/"
+    ]
+  },
+  "output_types": ["file_system_change_log", "stdout", "status_code"],
+  "diagnostics": {
+    "enabled": true,
+    "log_level": "INFO",
+    "telemetry": false
+  }
+}
