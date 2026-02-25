@@ -7,7 +7,8 @@ It is a complete cognitive organism that boots itself, reads its own source code
 
 Aureon OS is the runtime environment that lets this organism grow, and interact with humans as a true companion.
 
-Built by **Nadine Squires @quantumquantara**.
+Built by **Nadine Squires 
+@quantumquantara**
 
 ---
 
