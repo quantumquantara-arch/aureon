@@ -359,8 +359,9 @@ These examples serve to:
 - show how EvercycleState looks in practice  
 - illustrate transitions and threshold events  
 - demonstrate forecast and simulation outputs  
-- guide Aureon and NexLevelAI in user-facing interpretations  
+- guide Aureon in user-facing interpretations  
 
 They are templates for testing, onboarding, and aligning all implementations to the same mental model of the Evercycle Codex.
-```0
+
+
 
