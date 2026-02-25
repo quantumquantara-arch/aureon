@@ -1,7 +1,7 @@
 # Evercycle Codex — Cycle Definitions & Cross-Mapping
 Formal definitions of all cycles in the Evercycle Codex, including durations, semantics, mappings, and harmonic relationships between cosmic, civilizational, and personal scales.
 
-This is the canonical cycle map used by Aureon, NexLevelAI, and all Quantara systems.
+This is the canonical cycle map used by Aureon systems.
 
 
 
@@ -246,3 +246,4 @@ This file defines the *cycle mechanics* that power the Evercycle Codex.
 It ensures every subsystem — reasoning, math, transitions, forecasting, simulation, visualization — interprets time in the same structured, harmonic, coherent way.
 
 It is the backbone of how the Codex understands and maps reality.
+
