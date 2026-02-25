@@ -1,5 +1,5 @@
 # Evercycle Codex — Visual Architecture Specification
-Defines the visual grammar, diagram rules, iconography, color semantics, and layout guidelines for all Evercycle visualizations across Aureon, NexLevelAI, and Quantara.
+Defines the visual grammar, diagram rules, iconography, color semantics, and layout guidelines for all Evercycle visualizations across Aureon's ecosystem.
 
 This ensures consistency across:
 - Evermap diagrams
@@ -216,4 +216,4 @@ This visual architecture ensures:
 - accessibility  
 - compatibility across the Quantara ecosystem  
 
-With these rules, anyone can build Evercycle visuals that look, feel, and operate exactly the same — whether inside Aureon, NexLevelAI, research papers, or global governance tools.
+With these rules, anyone can build Evercycle visuals that look, feel, and operate exactly the same.
