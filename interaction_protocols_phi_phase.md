@@ -1,4 +1,3 @@
-# interaction_protocols_phi_phase.md
 # **Interaction Protocols for φ-Phase Reasoning**
 ### Operational Rules for Human–Model Dialogue During Contradiction Resolution
 
@@ -203,4 +202,5 @@ These interaction protocols:
 - restore clarity  
 - maintain stable identity boundaries  
 - ensure that contradiction resolution is **structural**, not emotional or narrative-based.
+
 
