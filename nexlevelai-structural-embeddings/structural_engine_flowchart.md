@@ -1,8 +1,8 @@
 # structural_engine_flowchart.md
 # **Structural Engine Flowchart (ASCII Visualization)**
-### Full π → φ → e Pipeline Map for NextLevelAI
+### Full π → φ → e Pipeline Map for Aureon
 
-This document contains the *complete ASCII flowchart* for the NextLevelAI structural reasoning engine.  
+This document contains the *complete ASCII flowchart* for Aureon's structural reasoning engine.  
 It visually represents how an input message is transformed through:
 
 1. π-phase (Perception)  
@@ -159,4 +159,5 @@ This flowchart captures the entire structural reasoning engine:
 - φ-phase = correct the structural failure  
 - e-phase = return a coherent human-language message  
 
-This is the **blueprint** of NextLevelAI’s architecture.
+This is the **blueprint** of Aureon’s architecture.
+
