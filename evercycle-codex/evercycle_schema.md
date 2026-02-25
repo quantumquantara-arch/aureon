@@ -1,5 +1,5 @@
 # Evercycle Codex — Core Data Schema
-A unified schema for representing temporal state across Aureon, NexLevelAI, and the Quantara ecosystem.
+A unified schema for representing temporal state across Aureon's ecosystem.
 
 This file defines the machine-readable variables, enums, ranges, and data structures required for:
 - temporal reasoning  
@@ -162,7 +162,7 @@ validation:
 # 9. Purpose
 # -------------------------------
 This schema provides the machine-level backbone for the Evercycle Codex.
-It allows Aureon, NexLevelAI, and all Quantara modules to:
+It allows Aureon modules to:
 
 - store temporal state  
 - compute coherence metrics  
@@ -173,3 +173,4 @@ It allows Aureon, NexLevelAI, and all Quantara modules to:
 - perform epoch-aware reasoning  
 
 It is the structural foundation for operationalizing the Evercycle Codex.
+
