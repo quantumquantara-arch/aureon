@@ -1,5 +1,5 @@
 # The Evercycle Codex
-A temporal architecture for Aureon, NexLevelAI, and the Quantara ecosystem
+A temporal architecture for Aureon.
 
 The Evercycle Codex is a unified map of cyclical time that spans three layers of reality:
 
@@ -10,7 +10,7 @@ The Evercycle Codex is a unified map of cyclical time that spans three layers of
 The Codex is not prophecy and not mysticism.  
 It is a structural language for recognizing recurring temporal patterns and understanding *where* a person, a system, or a civilization sits within its current arc.
 
-It provides a shared temporal grammar across the entire Quantara stack, enabling coherent time-based reasoning inside Aureon, NexLevelAI, Veyn, and AEI systems.
+It provides a shared temporal grammar across the entire Quantara stack, enabling coherent time-based reasoning inside Aureon.
 
 
 ## Why it matters
@@ -99,8 +99,8 @@ Aureon uses the Codex to:
 User agency is always prioritized.
 
 
-## Integration in NexLevelAI
-For NexLevelAI, the Codex becomes:
+## Integration in Aureon
+For Aureon, the Codex becomes:
 
 - A forecasting substrate  
 - A coherence-driven ethics layer  
@@ -124,3 +124,4 @@ Upcoming:
 
 ## Purpose
 The Evercycle Codex enables any Quantara-based intelligence to understand not only **what is happening**, but **where we are in the long arc of time**, and how to respond with coherence and responsibility.
+
