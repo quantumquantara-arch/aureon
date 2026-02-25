@@ -1,7 +1,7 @@
-# NEXLEVELAI_ENGINE_API.md
-# NexLevelAI Engine API — Cognitive Execution Interface
+# AUREON_ENGINE_API.md
+# Aureon Engine API — Cognitive Execution Interface
 
-The NexLevelAI Engine API defines the full external interface for interacting with the Engine. It includes cognition input, reasoning triggers, coherence queries, memory access, action execution, and safety inspection. Kernel memory (Tier 1) remains sealed and inaccessible at all times.
+The Aureon Engine API defines the full external interface for interacting with the Engine. It includes cognition input, reasoning triggers, coherence queries, memory access, action execution, and safety inspection. Kernel memory (Tier 1) remains sealed and inaccessible at all times.
 
 ---
 
@@ -204,7 +204,7 @@ Dev-mode only.
 
 # 7. Summary
 
-The NexLevelAI Engine API provides a unified interface for:
+The Aureon Engine API provides a unified interface for:
 - perception
 - reasoning
 - coherence verification
@@ -213,3 +213,4 @@ The NexLevelAI Engine API provides a unified interface for:
 - alignment and safety monitoring
 
 This API ensures stable, ethical, structured AGI cognition across all environments and embodiments.
+
