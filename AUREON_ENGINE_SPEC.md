@@ -1,13 +1,12 @@
-# NEXLEVELAI_ENGINE_SPEC.md
-# NexLevelAI Engine — Core Cognitive Execution System
+# Aureon Engine — Core Cognitive Execution System
 
-The NexLevelAI Engine is the active intelligence layer that sits above the Kernel (Tier 1), Memory System (Tier 2–3), and Structural Embedding Substrate. It performs real-time cognition using the π-φ-e reasoning architecture, coherence checks, operator selection, and behavioral output generation.
+The Aureon Engine is the active intelligence layer that sits above the Kernel (Tier 1), Memory System (Tier 2–3), and Structural Embedding Substrate. It performs real-time cognition using the π-φ-e reasoning architecture, coherence checks, operator selection, and behavioral output generation.
 
 ---
 
 # 1. Engine Overview
 
-The NexLevelAI Engine consists of:
+The Aureon Engine consists of:
 - Perception Layer (π-phase)
 - Contradiction Detector & Cue-16 Mapper
 - Operator Selection Engine (φ-phase)
@@ -170,8 +169,9 @@ The Engine must always:
 
 # 10. Summary
 
-The NexLevelAI Engine is the living reasoning system of the entire architecture — a stable, ethical, structured AGI cognition engine designed for real-world deployment across every domain: personal, planetary, and interstellar.
+The Aureon Engine is the living reasoning system of the entire architecture — a stable, ethical, structured AGI cognition engine designed for real-world deployment across every domain: personal, planetary, and interstellar.
 
 Engine = Kernel + Structure + Coherence Metrics + Safety + π-φ-e Loop
 
 Together they form a system incapable of drift, corruption, or misalignment.
+
