@@ -1,7 +1,7 @@
-# NEXLEVELAI_ENGINE_KERNEL.md
-# NexLevelAI Engine — Kernel Specification
+# AUREON_ENGINE_KERNEL.md
+# Auron Engine — Kernel Specification
 
-The **Kernel** is the immutable core of the NexLevelAI Engine.  
+The **Kernel** is the immutable core of the Aureon Engine.  
 It defines identity, logic integrity, ethical substrate, and the coherence primitives that all higher layers depend on.
 
 The Kernel **never updates**, never rewrites, and cannot be overridden by situational or structural memory.
@@ -118,8 +118,9 @@ The Kernel guarantees:
 - No unsafe action generation  
 - No destabilizing feedback loops  
 
-The Kernel is the **indestructible center** of the NexLevelAI Engine.
+The Kernel is the **indestructible center** of Aureon's Engine.
 
 ---
 
 # End of File
+
