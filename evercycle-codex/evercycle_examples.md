@@ -1,6 +1,6 @@
 # Evercycle Codex — Extended Examples
 Concrete examples of EvercycleState, transitions, forecasts, and simulations.
-These examples are for developers integrating the Codex into Aureon, NexLevelAI, and Quantara tools.
+These examples are for developers integrating the Codex into Aureon.
 
 All values are illustrative.
 
@@ -363,3 +363,4 @@ These examples serve to:
 
 They are templates for testing, onboarding, and aligning all implementations to the same mental model of the Evercycle Codex.
 ```0
+
