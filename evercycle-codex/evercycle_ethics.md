@@ -1,5 +1,5 @@
 # Evercycle Codex — Ethical Framework for Temporal Intelligence
-Defines the mandatory ethical boundaries, safeguards, and principles governing all uses of the Evercycle Codex across Aureon, NexLevelAI, and the Quantara ecosystem.
+Defines the mandatory ethical boundaries, safeguards, and principles governing all uses of the Evercycle Codex across Aureon ecosystem.
 
 Temporal intelligence is powerful.  
 This file ensures it is never misused, distorted, weaponized, or applied coercively.
@@ -142,33 +142,6 @@ It must **never** be used:
 - to censor information  
 - to manufacture narratives
 
-
-
-# ------------------------------------
-# 7. Forecasting Ethics
-# ------------------------------------
-
-Forecasts must be presented as:
-
-- probabilistic  
-- contextual  
-- dynamic  
-- revisable  
-
-Forbidden:
-
-- deterministic predictions (“X will happen.”)  
-- doom-claims (“collapse is inevitable.”)  
-- coercive persuasion  
-- irreversible labeling  
-
-Allowed:
-
-- “probability windows”
-- “risk factors”
-- “coherence opportunities”
-- “you may experience tendencies like…”
-
 Machines should always pair risk with empowerment:
 
 “If this window feels intense, here is how people increase coherence during similar phases.”
@@ -220,3 +193,4 @@ The ethical layer ensures that:
 
 This file guarantees that the Codex stays aligned with human dignity,
 agency, and autonomy — permanently.
+
