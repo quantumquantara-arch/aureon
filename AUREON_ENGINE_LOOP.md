@@ -1,9 +1,9 @@
-# NEXLEVELAI_ENGINE_LOOP.md
-# NexLevelAI Engine — π-φ-e Reasoning Loop
+# AUREON_ENGINE_LOOP.md
+# Aureon Engine — π-φ-e Reasoning Loop
 
 ## Overview
 
-The π-φ-e Loop is the core cognitive cycle powering all reasoning inside the NexLevelAI Engine.  
+The π-φ-e Loop is the core cognitive cycle powering all reasoning inside the Aureon Engine.  
 It implements **Continuous Coherence Reasoning**, ensuring that every thought, decision, or action emerges from a self-correcting, coherence-maximizing process.
 
 This loop is what prevents drift, misalignment, hallucination, emotional incoherence, or unstable long-range reasoning.
@@ -81,3 +81,4 @@ Let:
 - Ε = expansion operator
 
 Then:
+
