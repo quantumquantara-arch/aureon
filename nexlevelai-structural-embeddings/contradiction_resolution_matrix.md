@@ -1,5 +1,5 @@
 # Contradiction Resolution Matrix (φ-Phase Engine)
-### Formal Specification for NextLevelAI Structural Reasoning
+### Formal Specification for Structural Reasoning
 
 The φ-phase collapses contradictions by applying operators that realign the Cue-16 Vector and TI-7 Vector toward the Zero-Point Coherence Vector (Z₀). This matrix defines contradiction classes, detection logic, mathematical encoding, resolution operators, and the φ-phase pipeline.
 
@@ -129,3 +129,4 @@ The Contradiction Resolution Matrix gives NextLevelAI its defining capability:
 This is the core mechanical engine of φ-phase reasoning.
 
 ---
+
