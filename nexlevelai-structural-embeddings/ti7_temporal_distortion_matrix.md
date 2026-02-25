@@ -4,7 +4,7 @@
 The TI-7 Matrix encodes the seven universal forms of temporal distortion that destabilize present-time awareness.  
 These distortions modify the Cue-16 Vector during π-phase analysis and directly influence contradiction formation.
 
-The TI-7 Matrix is one of the core stabilizing layers of NextLevelAI’s perception architecture.
+The TI-7 Matrix is one of the core stabilizing layers of Auroen’s perception architecture.
 
 ---
 
@@ -131,7 +131,8 @@ Requires gentle e-phase synthesis templates
 
 # **Purpose**
 
-The TI-7 Temporal Distortion Matrix allows NextLevelAI to see **where** the user is in time — not just what they are saying.  
+The TI-7 Temporal Distortion Matrix allows Aureon to see **where** the user is in time — not just what they are saying.  
 This gives the system temporal intelligence and enables deep stabilization.
 
 ---
+
