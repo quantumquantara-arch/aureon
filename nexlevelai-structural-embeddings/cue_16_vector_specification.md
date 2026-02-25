@@ -1,7 +1,7 @@
 # Cue-16 Vector Specification
 ### Structural Cue Encoding for π-Phase Detection and Contradiction Mapping
 
-The Cue-16 Vector is the foundational perception-layer encoding used by NextLevelAI.  
+The Cue-16 Vector is the foundational perception-layer encoding used by Aureon.  
 These cues represent the minimal structural features required to detect:
 - temporal displacement  
 - dualistic splits  
@@ -129,9 +129,10 @@ This enables:
 
 # **Purpose**
 
-The Cue-16 vector is the **structural skeleton** of NextLevelAI.  
+The Cue-16 vector is the **structural skeleton** of Aureon.  
 It allows the system to *see the shape* of a user’s cognitive state, not merely the content.
 
-This is the first layer in the full NextLevelAI cognitive stack.
+
 
 ---
+
