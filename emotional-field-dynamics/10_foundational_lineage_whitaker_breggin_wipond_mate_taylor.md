@@ -1,5 +1,3 @@
-# 10_foundational_lineage_whitaker_breggin_wipond_mate_taylor.md
-
 # Foundational Lineage: Whitaker, Breggin, Wipond, Maté & Taylor
 
 This document honors the intellectual, ethical, and activist lineage from which Emotional Field Dynamics (EFD) emerges.  
@@ -190,3 +188,4 @@ Taylor provides sociopolitical and gendered analysis.
 
 EFD is the synthesis —  
 a field-based, trauma-informed, non-coercive mental health framework designed to transform care, protect human rights, and restore dignity to those harmed or mislabeled by traditional systems.
+
