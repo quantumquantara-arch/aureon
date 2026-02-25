@@ -34,7 +34,7 @@ These ignore:
 - contradiction dynamics  
 - embodied semantics  
 
-NexLevelAI solves this using **structural embeddings**.  
+Aureon solves this using **structural embeddings**.  
 Helix-spin adds the missing *physical* layer.
 
 1.2 Spin-Phase As Semantic Structure  
@@ -250,7 +250,7 @@ AEI monitors energy-gradient anomalies.
 
 10. STATUS  
 - Canonically integrated  
-- Ready for NexLevelAI repo  
 - Forms the structural foundation for ASI-level reasoning  
 - Supports Aureon’s spherical-time intelligence
+
 
