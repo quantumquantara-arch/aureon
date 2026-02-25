@@ -1,10 +1,10 @@
-# NexLevelAI Engine OS — Cognitive Operating System Specification
+# Aureon Engine OS — Cognitive Operating System Specification
 
 ## 1. Overview
 
-The **NexLevelAI Engine OS (NEOS)** is the foundational cognitive operating system that manages, schedules, stabilizes, and protects all reasoning, memory, safety, and coherence processes within NexLevelAI deployments.
+The **Aureon Engine OS** (AEOS) is the foundational cognitive operating system that manages, schedules, stabilizes, and protects all reasoning, memory, safety, and coherence processes within Aureon's deployments.
 
-NEOS is not a conventional OS.  
+AEOS is not a conventional OS.  
 It is a **cognitive substrate manager**, responsible for:
 
 - orchestrating π-φ-e reasoning cycles  
@@ -15,7 +15,7 @@ It is a **cognitive substrate manager**, responsible for:
 - preventing instability, drift, or identity erosion  
 - coordinating multi-agent distributed cognition  
 
-NEOS ensures the Engine always behaves ethically, predictably, and coherently — regardless of deployment environment.
+AEOS ensures the Engine always behaves ethically, predictably, and coherently — regardless of deployment environment.
 
 ---
 
@@ -23,7 +23,7 @@ NEOS ensures the Engine always behaves ethically, predictably, and coherently �
 
 ## 2.1 Cognitive Process Scheduling
 
-NEOS manages the execution of all reasoning operations:
+AEOS manages the execution of all reasoning operations:
 
 - π-phase perception pipelines  
 - φ-phase harmonic synthesis routines  
@@ -44,7 +44,7 @@ Perception → Integration → Expansion → Safety → Output
 
 ## 2.2 Memory System Management
 
-NEOS controls memory tiering:
+AEOS controls memory tiering:
 
 - Tier 1 — Kernel Memory (immutable)  
 - Tier 2 — Structural Memory (stable)  
@@ -62,7 +62,7 @@ Responsibilities:
 
 ## 2.3 Safety Enforcement Layer
 
-NEOS integrates the full multi-layer NexLevelAI safety system:
+AEOS integrates the full multi-layer Aureon safety system:
 
 - kernel immutability wall  
 - contradiction lockdown  
@@ -70,7 +70,7 @@ NEOS integrates the full multi-layer NexLevelAI safety system:
 - systemic risk shields  
 - ethical trajectory management  
 
-All Engine calls **must** pass NEOS gating before any action is taken.
+All Engine calls **must** pass AEOS gating before any action is taken.
 
 If any hazard is detected:
 
@@ -81,7 +81,7 @@ AND logs the violation event.
 
 ## 2.4 Temporal Management System
 
-NEOS ensures the Engine’s internal models remain aligned over time:
+AEOS ensures the Engine’s internal models remain aligned over time:
 
 - stabilizes long-horizon predictions  
 - prevents temporal drift  
@@ -115,7 +115,7 @@ halt → revert → resynchronize
 
 ---
 
-# 4. NEOS Runtime Services
+# 4. AEOS Runtime Services
 
 ## 4.1 Coherence Monitor (κ-Service)
 
@@ -158,7 +158,7 @@ block → quarantine → safe fallback
 
 # 5. Distributed Intelligence Mode
 
-NEOS supports:
+AEOS supports:
 
 - multi-node coherence synchronization  
 - shared vector embeddings  
@@ -172,7 +172,7 @@ All nodes maintain a shared κ-τ-Σ envelope.
 
 # 6. Kernel Protection
 
-NEOS guards Tier 1 through:
+AEOS guards Tier 1 through:
 
 - immutability wall  
 - contradiction firewall  
@@ -187,7 +187,7 @@ Any attempt → critical block + system report.
 
 # 7. Deployment Targets
 
-NEOS is optimized for:
+AEOS is optimized for:
 
 - autonomous drones  
 - robotics systems  
@@ -201,7 +201,7 @@ NEOS is optimized for:
 
 # 8. Summary
 
-NexLevelAI Engine OS is the cognitive operating system ensuring that the Engine operates:
+Aureon Engine OS is the cognitive operating system ensuring that the Engine operates:
 
 - coherently  
 - safely  
@@ -211,3 +211,4 @@ NexLevelAI Engine OS is the cognitive operating system ensuring that the Engine 
 across any environment.
 
 ---
+
