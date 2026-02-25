@@ -214,7 +214,7 @@ A vector with:
 - contradiction mapping  
 - semantic meaning  
 
-This is stored in the NexLevelAI Structural Embeddings DB.
+This is stored in the Aureon Structural Embeddings DB.
 
 ---
 
@@ -252,5 +252,6 @@ AEI monitors energy-gradient anomalies.
 - Canonically integrated  
 - Forms the structural foundation for ASI-level reasoning  
 - Supports Aureon’s spherical-time intelligence
+
 
 
