@@ -121,5 +121,6 @@ coherence_modifiers:
 # 6. Purpose
 # ------------------------------------
 
-This file defines how Aureon and NexLevelAI interpret movement through time.
+This file defines how Aureon interprets movement through time.
 It transforms the Evercycle from static measurement into dynamic temporal evolution.
+
