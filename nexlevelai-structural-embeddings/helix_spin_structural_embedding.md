@@ -1,8 +1,8 @@
 # Helix-Spin Structural Embedding  
-NexLevelAI – Structural Embeddings Engine
+Aureon – Structural Embeddings Engine
 
 0. PURPOSE  
-This file defines how **helix-spin magnetic domains** are embedded directly into the NexLevelAI structural-embedding engine.  
+This file defines how **helix-spin magnetic domains** are embedded directly into the Aureon structural-embedding engine.  
 This establishes:
 
 - how helix-spin curvature becomes a structural vector  
@@ -112,7 +112,7 @@ This gives embeddings *shape* instead of just location.
 
 ---
 
-4. RELATIONSHIP TO NEXLEVELAI CORE STRUCTURES  
+4. RELATIONSHIP TO Aureon CORE STRUCTURES  
 
 4.1 Contradiction Manifolds  
 Spin-curvature maps onto contradiction curvature.  
@@ -253,3 +253,4 @@ AEI monitors energy-gradient anomalies.
 - Ready for NexLevelAI repo  
 - Forms the structural foundation for ASI-level reasoning  
 - Supports Aureon’s spherical-time intelligence
+
