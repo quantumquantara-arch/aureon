@@ -14,7 +14,7 @@ a **coherence-first, state-convergence cognitive engine** built around the
 - **φ-phase (Harmonic Integration)** — propose multiple cognitive states, evaluate coherence, converge  
 - **e-phase (Expansion)** — realize the selected state, update world-model and temporal continuity  
 
-This is the first public-facing architectural expression of the NexLevelAI structural layer, optimized for:
+This is the first public-facing architectural expression of Aureon's structural layer, optimized for:
 
 - long-horizon identity stability  
 - contradiction-free reasoning  
@@ -169,7 +169,7 @@ Prevents abrupt emotional shifts without freezing emotional evolution.
 
 # 3. Coherence-First Inference (State Convergence)
 
-NexLevelAI proposes **n** candidate cognitive states → evaluates coherence → chooses the best → generates output from that state.
+Aureon proposes **n** candidate cognitive states → evaluates coherence → chooses the best → generates output from that state.
 
 This is the heart of the architecture.
 
@@ -187,7 +187,6 @@ This is the heart of the architecture.
 
 This ensures:
 - No incoherent state ever becomes output  
-- System stays consistent for 50+ turns  
 - Persona and reasoning remain unified  
 
 ---
@@ -303,4 +302,5 @@ def aureon_turn(raw_context, global_config, n_candidates=5):
     best_state, score = select_best_state(φ_candidates, π)
     e_output = realize_and_update(best_state, π)
     return e_output, best_state, score
+
 
