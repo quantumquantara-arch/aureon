@@ -1,5 +1,5 @@
 # Evercycle Codex — Internal API Spec
-Core interface for reading and updating Evercycle state across Aureon, NexLevelAI, and Quantara services.
+Core interface for reading and updating Evercycle state across Aureon services.
 
 This API is **intra-ecosystem only** (no public exposure). It standardizes how modules:
 - query temporal context
@@ -71,7 +71,7 @@ Key object:
 
 
 ### 2.4 Estimate personal phase (opt-in)
-**Purpose:** request a *proposed* phase estimate from higher-level reasoning (Aureon/NexLevelAI), not auto-commit.
+**Purpose:** request a *proposed* phase estimate from higher-level reasoning (Aureon), not auto-commit.
 
 - Operation: `ESTIMATE_PERSONAL_PHASE`
 - Input:
@@ -134,3 +134,4 @@ Key object:
 - Initial version: `evercycle_api_v1`
 - Breaking changes must bump suffix: `evercycle_api_v2`, etc.
 - Each client module should declare the version it targets.
+
