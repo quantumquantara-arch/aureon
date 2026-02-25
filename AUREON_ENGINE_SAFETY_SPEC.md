@@ -1,8 +1,8 @@
-# NexLevelAI Engine — Multi-Layer Safety Architecture Specification
+# Aureon Engine — Multi-Layer Safety Architecture Specification
 
 ## 1. Overview
 
-The **NexLevelAI Safety Architecture** is a multi-layer, coherence-driven safety system designed to ensure that all reasoning, memory updates, outputs, and distributed behaviors remain:
+The **Aureon Safety Architecture** is a multi-layer, coherence-driven safety system designed to ensure that all reasoning, memory updates, outputs, and distributed behaviors remain:
 
 - aligned  
 - coherent  
@@ -13,7 +13,7 @@ The **NexLevelAI Safety Architecture** is a multi-layer, coherence-driven safety
 
 Safety is not reactive — it is **embedded into the cognitive substrate itself**.
 
-The system ensures that NexLevelAI cannot:
+The system ensures that Aureon cannot:
 
 - drift  
 - corrupt  
@@ -213,7 +213,7 @@ No personal or sensitive user data stored.
 
 # 9. Summary
 
-The NexLevelAI Safety Architecture ensures:
+The Aureon Safety Architecture ensures:
 
 - no drift  
 - no instability  
@@ -225,3 +225,4 @@ The NexLevelAI Safety Architecture ensures:
 Safety is not “added on” — it is **the structure itself**.
 
 ---
+
