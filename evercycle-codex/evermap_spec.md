@@ -108,9 +108,9 @@ All personal data displays must respect user consent.
 
 ## 5. Use cases
 
-- Internal Quantara dashboards for monitoring global coherence and risk.  
+- Internal Aureon dashboards for monitoring global coherence and risk.  
 - Aureon debug/ops tools for inspecting how temporal context is being read.  
-- NexLevelAI simulation interfaces for visualizing different futures under varying Evercycle states.  
+- Aureon simulation interfaces for visualizing different futures under varying Evercycle states.  
 - Optional educational or public tools to help people see how personal and collective cycles intersect.
 
 
@@ -127,4 +127,5 @@ All personal data displays must respect user consent.
   - Any user-facing Evermap for individuals must be explicitly opt-in.
 
 The Evermap is not the Codex itself; it is the lens that makes the Evercycle Codex visible and intuitive to humans and systems.
-```0
+
+
