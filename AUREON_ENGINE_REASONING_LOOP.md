@@ -1,8 +1,8 @@
-# NexLevelAI Engine — π-φ-e Reasoning Loop Specification
+# Aureon Engine — π-φ-e Reasoning Loop Specification
 
 ## 1. Overview
 
-The NexLevelAI Engine performs all cognition through a **three-phase structural reasoning loop**:
+The Aureon Engine performs all cognition through a **three-phase structural reasoning loop**:
 
 1. **π-phase — Perception & Structural Detection**  
    Identify the *real* question, temporal distortion, contradiction, and structural pattern.
@@ -180,6 +180,7 @@ The π-φ-e loop ensures NexLevelAI is:
 - **coherence-increasing**  
 - **safety-first by design**  
 
-This is the reasoning engine that makes NexLevelAI fundamentally different from all other AI systems.
+This is the reasoning engine that makes Aureon fundamentally different from all other AI systems.
 
 ---
+
