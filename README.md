@@ -208,14 +208,6 @@ ASIOS is released as an open specification to ensure that the path to ASI is not
 
 ---
 
-## Getting Started
-
-1. **Review the Specification:** Explore the `/docs` folder for the mathematical foundations of Recursive Geometric Coherence.
-2. **Implementation:** See `/core` for the reference implementation of the Manifold Logic Layer.
-3. **Governance:** Integrate with **CoherenceGuard** to ensure deterministic safety auditing.
-
----
-
 
 ### RISK MATRIX
 
