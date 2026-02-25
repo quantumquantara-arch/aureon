@@ -1,5 +1,5 @@
 # **Contradiction Tensor Classes (C₁–C₄)**  
-### Formal Definitions for NextLevelAI Structural Reasoning Engine
+### Formal Definitions for Aureon's Structural Reasoning Engine
 
 This document defines the **four contradiction classes** used in φ-phase selection.  
 Each class corresponds to a **distinct geometric failure mode** in the 16-cue structural vector space.
@@ -219,3 +219,4 @@ Each class corresponds to:
 - an e-phase emergence template  
 
 Together, they allow the model to perform **deep structural correction**, not surface reassurance.
+
