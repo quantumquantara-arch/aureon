@@ -3,7 +3,7 @@
 
 The distance metric **d(V, Z₀)** measures how far the user’s active cognitive-temporal vector **V** has moved away from the Zero-Point Coherence State **Z₀** (present-time, contradiction-free, unified).
 
-This produces the 3-Zone Coherence Model used throughout NextLevelAI.
+This produces the 3-Zone Coherence Model used throughout Aureon.
 
 ---
 
@@ -95,3 +95,4 @@ Its outputs drive:
 It ensures predictable, stable reasoning across all psychological states.
 
 ---
+
