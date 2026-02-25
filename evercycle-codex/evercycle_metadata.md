@@ -6,7 +6,7 @@ This file ensures:
 - reproducibility
 - dependency clarity
 - upgrade stability
-- integrity across Aureon, NexLevelAI, and Quantara
+
 
 
 # ------------------------------------
@@ -232,4 +232,5 @@ The metadata spec ensures the Evercycle Codex is:
 - future-proof  
 - machine-verifiable  
 
-It is the structural backbone that lets Aureon, NexLevelAI, and Quantara evolve safely without breaking the Codex’s internal consistency.
+It is the structural backbone that lets Aureon evolve safely without breaking the Codex’s internal consistency.
+
