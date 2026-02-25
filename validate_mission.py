@@ -1,54 +1,70 @@
-import json, sys, re
+import json
+import sys
 from datetime import datetime
 
-ALLOWED_TYPES = {"LAPTOP_FS"}
-ALLOWED_OPS = {"CREATE_FILE","REPLACE_FILE","INSERT_AFTER_MARKER","DELETE_FILE","RUN_SCRIPT"}
+CONFIG_PATH = "validation/mission_validator_config.json"
 
-def is_iso8601_z(s: str) -> bool:
-    try:
-        datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ")
-        return True
-    except Exception:
-        return False
+def load_config():
+    with open(CONFIG_PATH, 'r') as f:
+        return json.load(f)
 
-def fail(msg: str):
-    raise ValueError(msg)
+def validate_mission(mission_path):
+    with open(mission_path, 'r') as f:
+        mission = json.load(f)
 
-def validate(m: dict):
-    for k in ["mission_id","schema_version","created_at","env","created_by_agent","type","payload"]:
-        if k not in m:
-            fail(f"missing field: {k}")
-    if not is_iso8601_z(m["created_at"]):
-        fail("created_at must be UTC Z ISO8601: YYYY-MM-DDTHH:MM:SSZ")
-    if m["type"] not in ALLOWED_TYPES:
-        fail(f"type must be one of: {sorted(ALLOWED_TYPES)}")
-    payload = m["payload"]
-    if "steps" not in payload or not isinstance(payload["steps"], list) or len(payload["steps"]) == 0:
-        fail("payload.steps must be a non-empty list")
-    for i, step in enumerate(payload["steps"]):
-        if "op" not in step or "path" not in step:
-            fail(f"step[{i}] missing op/path")
-        if step["op"] not in ALLOWED_OPS:
-            fail(f"step[{i}] op invalid: {step['op']}")
-        if step["op"] in {"CREATE_FILE","REPLACE_FILE","INSERT_AFTER_MARKER"} and "content" not in step:
-            fail(f"step[{i}] {step['op']} requires content")
-        if "expected_previous_hash" in step and step["expected_previous_hash"] is not None:
-            h = str(step["expected_previous_hash"]).lower()
-            if not re.fullmatch(r"[0-9a-f]{64}", h):
-                fail(f"step[{i}] expected_previous_hash must be 64 hex chars or null")
-    return True
+    config = load_config()
+    errors = []
+
+    # Check required root fields
+    for field in config["required_fields"]:
+        if field not in mission:
+            errors.append(f"Missing root field: {field}")
+
+    # Check environment
+    if mission.get("env") not in config["allowed_environments"]:
+        errors.append(f"Invalid environment: {mission.get('env')}")
+
+    # Check payload structure
+    payload = mission.get("payload", {})
+    for field in config["payload_required_fields"]:
+        if field not in payload:
+            errors.append(f"Missing payload field: {field}")
+
+    steps = payload.get("steps", [])
+    if not isinstance(steps, list):
+        errors.append("Payload 'steps' must be a list")
+
+    if len(steps) > config["max_payload_steps"]:
+        errors.append(f"Too many steps: {len(steps)}")
+
+    # Check each step
+    for i, step in enumerate(steps):
+        for field in config["step_required_fields"]:
+            if field not in step:
+                errors.append(f"Step {i} missing field: {field}")
+
+        op = step.get("op")
+        if op not in config["allowed_operations"]:
+            errors.append(f"Step {i} has invalid operation: {op}")
+
+        if op in config["op_with_content_required"] and "content" not in step:
+            errors.append(f"Step {i} ({op}) missing 'content'")
+        if op in config["op_content_optional"] and "content" not in step:
+            pass  # optional
+        if "expected_previous_hash" not in step:
+            errors.append(f"Step {i} missing 'expected_previous_hash'")
+
+    if errors:
+        print("Mission validation failed:")
+        for e in errors:
+            print(" -", e)
+        sys.exit(1)
+    else:
+        print("Mission validated successfully.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python validate_mission.py <mission.json>")
+        print("Usage: python validate_mission.py <mission_file.json>")
         sys.exit(1)
-    p = sys.argv[1]
-    try:
-        with open(p, "r", encoding="utf-8-sig") as f:
-            m = json.load(f)
-        validate(m)
-        print("Mission file is valid âœ…")
-        sys.exit(0)
-    except Exception as e:
-        print(f"Mission invalid â?Œ: {e}")
-        sys.exit(1)
+
+    validate_mission(sys.argv[1])

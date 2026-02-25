@@ -1,0 +1,36 @@
+{
+  "allowed_environments": ["DEV", "STAGING"],
+  "max_payload_steps": 50,
+  "allowed_operations": [
+    "CREATE_FILE",
+    "REPLACE_FILE",
+    "INSERT_AFTER_MARKER",
+    "DELETE_FILE",
+    "RUN_SCRIPT"
+  ],
+  "required_fields": [
+    "mission_id",
+    "schema_version",
+    "created_at",
+    "env",
+    "created_by_agent",
+    "type",
+    "payload"
+  ],
+  "payload_required_fields": [
+    "steps"
+  ],
+  "step_required_fields": [
+    "op",
+    "path"
+  ],
+  "op_with_content_required": [
+    "CREATE_FILE",
+    "REPLACE_FILE",
+    "INSERT_AFTER_MARKER"
+  ],
+  "op_content_optional": [
+    "RUN_SCRIPT",
+    "DELETE_FILE"
+  ]
+}
