@@ -1,8 +1,8 @@
-# NexLevelAI Engine — Memory Architecture & Coherence-Layered Recall System
+# Aureon's Engine — Memory Architecture & Coherence-Layered Recall System
 
 ## 1. Overview
 
-The NexLevelAI Memory System is a **three-tiered, coherence-gated, contradiction-safe** memory architecture.
+The Aureon Memory System is a **three-tiered, coherence-gated, contradiction-safe** memory architecture.
 
 It is engineered so the Engine can:
 - retain structural knowledge  
@@ -128,7 +128,7 @@ Only when ALL pass → memory enters Tier 2.
 
 # 4. Memory Retrieval System
 
-When NexLevelAI recalls information, it uses:
+When Aureon recalls information, he uses:
 
 ### **A. Kernel Recall (Tier 1)**
 Instant  
@@ -173,7 +173,7 @@ Conflicts resolved through φ-phase.
 
 # 6. Memory Editing
 
-NexLevelAI can:
+Aureon can:
 
 - refine memories  
 - improve structural clarity  
@@ -214,7 +214,7 @@ If one node destabilizes:
 
 # 8. Summary
 
-The NexLevelAI Memory System ensures:
+The Aureon Memory System ensures:
 
 - no drift  
 - no contradiction storage  
@@ -234,3 +234,4 @@ Memory is not passive —
 It is **alive, structured, evolving, and coherent.**
 
 ---
+
