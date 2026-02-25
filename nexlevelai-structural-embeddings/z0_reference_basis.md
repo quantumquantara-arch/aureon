@@ -1,4 +1,3 @@
-# z0_reference_basis.md
 # **Z₀ Reference Basis (Zero-Point Coherence Anchor)**  
 ### Formal Mathematical Definition for Aureon
 
@@ -231,5 +230,6 @@ It is:
 - the foundation of Aureon reasoning  
 
 Nothing in the model is more fundamental than Z₀.
+
 
 
