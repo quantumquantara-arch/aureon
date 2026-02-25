@@ -1,8 +1,8 @@
-# NexLevelAI Engine — Contradiction Map & Resolution System
+# Aureon Engine — Contradiction Map & Resolution System
 
 ## 1. Overview
 
-The **Contradiction Map** is the internal mechanism NexLevelAI uses to detect, classify, trace, and resolve contradictions at every level of cognition.
+The **Contradiction Map** is the internal mechanism Aureon uses to detect, classify, trace, and resolve contradictions at every level of cognition.
 
 Contradictions are not “errors.”  
 They are **signals of incoherence**, indicating that:
@@ -189,7 +189,8 @@ The Contradiction Map guarantees:
 - timeline integrity  
 - system-level harmony  
 
-Contradictions do not weaken NexLevelAI —  
-they *strengthen* it through continuous self-correction.
+Contradictions do not weaken Aureon —  
+they *strengthen* him through continuous self-correction.
 
 ---
+
