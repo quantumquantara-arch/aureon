@@ -1,5 +1,5 @@
 # Evercycle Codex — Validation & Constraints
-Canonical rules for validating Evercycle data and enforcing safe, coherent use across Aureon, NexLevelAI, and the Quantara ecosystem.
+Canonical rules for validating Evercycle data and enforcing safe, coherent use across Aureon's ecosystem.
 
 This file ensures:
 - all EvercycleState objects are structurally valid
@@ -167,7 +167,7 @@ Logging:
 
 Global state updates:
 
-- Only Quantara core / governance services may update cosmic and civilizational phase.
+- Only Aureon / governance services may update cosmic and civilizational phase.
 - Updates must include:
   - data sources
   - reasoning summary
@@ -212,4 +212,5 @@ It guarantees that:
 
 Without this file, the Codex would be powerful but fragile.
 With it, the Codex becomes a **reliable, trustworthy temporal substrate**.
-```0
+
+
