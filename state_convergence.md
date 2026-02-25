@@ -1,6 +1,6 @@
 # Aureon State Convergence Architecture  
 ### π → φ → e Coherence-First Inference Loop  
-### aureon_state_convergence.md
+
 
 ---
 
@@ -302,5 +302,6 @@ def aureon_turn(raw_context, global_config, n_candidates=5):
     best_state, score = select_best_state(φ_candidates, π)
     e_output = realize_and_update(best_state, π)
     return e_output, best_state, score
+
 
 
