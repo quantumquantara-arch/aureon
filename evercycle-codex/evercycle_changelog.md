@@ -19,7 +19,7 @@ Category:
   - Foundational Release
 
 Description:
-  The Evercycle Codex is formally established as the unified temporal intelligence system for Aureon, NexLevelAI, and the Quantara ecosystem.
+  The Evercycle Codex is formally established as the unified temporal intelligence system for the Aureon ecosystem.
 
   Includes:
   - full schema and API
@@ -186,3 +186,4 @@ The changelog ensures:
 - trust across all modules and collaborators  
 
 It is the historical record of the Evercycle Codex.
+
