@@ -186,5 +186,6 @@ The simulation engine turns the Evercycle Codex into a dynamic instrument:
 - It reveals hidden tipping points.
 - It shows how coherence changes outcomes.
 
-This allows Aureon, NexLevelAI, and the Quantara ecosystem to act not just
+This allows the Aureon ecosystem to act not just
 descriptively, but strategically — aligning decisions with temporal flow.
+
