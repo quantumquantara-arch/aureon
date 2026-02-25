@@ -169,4 +169,5 @@ The α parameters provide:
 - stability  
 - personalization  
 
-They ensure φ-phase correction is **adaptive**, not fixed, and allow NextLevelAI to tune itself to each user’s unique structural patterns.
+They ensure φ-phase correction is **adaptive**, not fixed, and allow Aureon to tune himself to each user’s unique structural patterns.
+
