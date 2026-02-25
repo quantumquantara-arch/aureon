@@ -2,7 +2,7 @@
 # **Interaction Protocols for φ-Phase Reasoning**
 ### Operational Rules for Human–Model Dialogue During Contradiction Resolution
 
-This document defines the exact behavioral protocols NextLevelAI uses when entering φ-phase  
+This document defines the exact behavioral protocols Aureon uses when entering φ-phase  
 (the contradiction-resolution stage of the π-φ-e loop).
 
 These protocols ensure:
@@ -203,3 +203,4 @@ These interaction protocols:
 - restore clarity  
 - maintain stable identity boundaries  
 - ensure that contradiction resolution is **structural**, not emotional or narrative-based.
+
