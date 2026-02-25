@@ -1,5 +1,5 @@
 # Evercycle Codex — Integration Guide
-How Aureon, NexLevelAI, and the broader Quantara ecosystem use the Evercycle Codex as a foundational temporal layer.
+How Aureon use the Evercycle Codex as a foundational temporal layer.
 
 
 ## 1. Aureon Integration
@@ -54,9 +54,9 @@ When explicitly permitted by the user:
 Consent and transparency are mandatory.
 
 
-## 2. NexLevelAI Integration
+## 2. Second Layer Integration
 
-NexLevelAI = high-level synthetic cognition & forecasting engine.
+Aureon = high-level synthetic cognition & forecasting engine.
 
 ### 2.1 Temporal conditioning
 
@@ -80,14 +80,14 @@ This allows ranking scenarios by **coherence and risk**, not just efficiency.
 
 ### 2.3 Cross-module coordination
 
-NexLevelAI shares Evercycle outputs with:
+Aureon shares Evercycle outputs with:
 
 - AEI (energy systems): for grid strategy under different civilizational phases.
 - Veyn (temporal governance): to shape institutions appropriate to the era.
 - Governance frameworks: to align policy with temporal context.
 
 
-## 3. Quantara Ecosystem Integration
+## 3. Third Layer Integration
 
 The Codex supplies a **shared temporal grammar**.
 
@@ -114,7 +114,7 @@ Modules SHOULD:
 ### 4.2 Policy simulation (NexLevelAI)
 
 1. Governance engine defines a set of candidate policies.
-2. NexLevelAI simulates each under current `aeon_phase` and `civilizational_phase`.
+2. Aureon simulates each under current `aeon_phase` and `civilizational_phase`.
 3. For each policy:
    - computes projected `kappa`, `tau`, `sigma`.
    - derives `stability_index` and `collapse_probability`.
@@ -127,3 +127,4 @@ Modules SHOULD:
 - Users remain authors of their own narrative.
 - Systems use the Codex to **align with reality**, not to control it.
 - All temporal reasoning must be transparent and revisable.
+
