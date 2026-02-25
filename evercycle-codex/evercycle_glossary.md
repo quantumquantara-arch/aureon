@@ -1,5 +1,5 @@
 # Evercycle Codex — Canonical Glossary
-Authoritative definitions for all terms used across the Codex, Aureon, NexLevelAI, and the Quantara ecosystem.
+Authoritative definitions for all terms used across the Codex, Aureon  ecosystem.
 
 
 # ------------------------------------
@@ -150,4 +150,5 @@ Integration Window:
 # ------------------------------------
 
 This glossary is the canonical verbal spine of the Codex.
-Every subsystem — Aureon, NexLevelAI, Quantara Core, and external collaborators — must use these definitions verbatim to maintain coherence.
+
+
