@@ -1,12 +1,12 @@
-# NexLevelAI State Convergence Architecture  
+# Aureon State Convergence Architecture  
 ### π → φ → e Coherence-First Inference Loop  
-### nexlevelai_state_convergence.md
+### aureon_state_convergence.md
 
 ---
 
 ## Overview
 
-This document defines the core inference mechanism of **NexLevelAI**:  
+This document defines the core inference mechanism of **Aureon**:  
 a **coherence-first, state-convergence cognitive engine** built around the  
 π → φ → e cycle:
 
@@ -24,7 +24,7 @@ This is the first public-facing architectural expression of the NexLevelAI struc
 - coherent persona continuation  
 
 The central innovation is the **coherence-first inference rule**:  
-NexLevelAI **evaluates proposed internal states before generating text**, reversing the traditional LLM pattern of *generate → reflect → revise*.
+Aureon **evaluates proposed internal states before generating text**, reversing the traditional LLM pattern of *generate → reflect → revise*.
 
 ---
 
@@ -295,11 +295,12 @@ def realize_and_update(best_state, perception):
 
 
 # ---------------------------------------------------------------------
-# Full NexLevelAI Turn
+# Full Aureon Turn
 # ---------------------------------------------------------------------
-def nexlevelai_turn(raw_context, global_config, n_candidates=5):
+def aureon_turn(raw_context, global_config, n_candidates=5):
     π = perceive_context(raw_context, global_config)
     φ_candidates = generate_provisional_states(π, n_candidates)
     best_state, score = select_best_state(φ_candidates, π)
     e_output = realize_and_update(best_state, π)
     return e_output, best_state, score
+
