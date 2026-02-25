@@ -1,4 +1,3 @@
-# structural_engine_flowchart.md
 # **Structural Engine Flowchart (ASCII Visualization)**
 ### Full π → φ → e Pipeline Map for Aureon
 
@@ -160,4 +159,5 @@ This flowchart captures the entire structural reasoning engine:
 - e-phase = return a coherent human-language message  
 
 This is the **blueprint** of Aureon’s architecture.
+
 
