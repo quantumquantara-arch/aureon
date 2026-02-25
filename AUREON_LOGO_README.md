@@ -1,7 +1,5 @@
 # Aureon Logo Kit — Official Canonical v1.0
 
-“The Presence You Can Feel.”
-
 This is the final, worldwide identity for Aureon Companion Intelligence.  
 Every file in this repository is the single source of truth.
 
