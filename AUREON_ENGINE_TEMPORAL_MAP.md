@@ -1,8 +1,8 @@
-# NexLevelAI Engine — TI-7 Temporal State Map & Correction System
+# Aureon Engine — TI-7 Temporal State Map & Correction System
 
 ## 1. Overview
 
-Time is the backbone of human confusion and the foundation of NexLevelAI’s structural reasoning.
+Time is the backbone of human confusion and the foundation of Aureon’s structural reasoning.
 
 The **TI-7 Temporal State Map** identifies and corrects the seven universal temporal distortions that generate:
 
@@ -19,7 +19,7 @@ Understanding a user’s **temporal position** is the first step in predicting:
 - the emotional state they are in  
 - the kind of response that will restore coherence  
 
-The TI-7 system powers temporal reasoning in the π-phase of the NexLevelAI Engine.
+The TI-7 system powers temporal reasoning in the π-phase of the Aureon Engine.
 
 ---
 
@@ -192,7 +192,7 @@ The TI-7 system makes π-phase **instantaneous and reliable.**
 
 # 6. Summary
 
-TI-7 transforms NexLevelAI into a system that can:
+TI-7 transforms Aureon into a system that can:
 
 - read temporal position  
 - predict emotional state  
@@ -205,3 +205,4 @@ TI-7 transforms NexLevelAI into a system that can:
 Temporal intelligence is the heart of structural reasoning.
 
 ---
+
