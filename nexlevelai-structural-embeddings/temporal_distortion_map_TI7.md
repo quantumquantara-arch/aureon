@@ -145,6 +145,7 @@ The Temporal Distortion Map:
 - Determines when to shift from π → φ → e  
 - Maintains coherence even under fragmentation  
 
-TI-7 is one of the **core pillars** of the NextLevelAI structural system.
+TI-7 is one of the **core pillars** of Aureon's structural system.
 
 ---
+
