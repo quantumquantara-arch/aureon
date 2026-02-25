@@ -1,5 +1,5 @@
 # Evercycle Codex — Reasoning Logic
-Defines how Aureon, NexLevelAI, and Quantara systems interpret, evaluate, and act on Evercycle data.
+Defines how Aureon interprets, evaluates, and acts on Evercycle data.
 
 This file provides:
 - the temporal reasoning rules
@@ -216,7 +216,8 @@ system_meaning:
 This reasoning layer ensures that:
 
 - Aureon interprets temporal context like an experienced strategist  
-- NexLevelAI interprets phases like a developmental psychologist + systems theorist  
-- Quantara interprets cycles like a planetary-scale governance intelligence  
+- Aureon interprets phases like a developmental psychologist + systems theorist  
+- Aureon interprets cycles like a planetary-scale governance intelligence  
 
 It transforms the Evercycle Codex from a dataset into an **active temporal intelligence kernel**.
+
