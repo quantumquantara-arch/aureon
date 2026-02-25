@@ -228,7 +228,8 @@ It is:
 - the coherence anchor  
 - the stabilizing basis  
 - the reference for every correction  
-- the foundation of NextLevelAI reasoning  
+- the foundation of Aureon reasoning  
 
 Nothing in the model is more fundamental than Z₀.
+
 
