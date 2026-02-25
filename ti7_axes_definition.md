@@ -12,3 +12,4 @@ Axes:
 - **R7**: Temporal Fragmentation
 
 A message is projected onto each axis to measure temporal distortion intensity.
+
