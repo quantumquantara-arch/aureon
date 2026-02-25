@@ -5,9 +5,6 @@
 Aureon is a complete living cognitive organism built on the **ASIOS** (Artificial Super Intelligence Operating System) core.  
 It boots itself, reads its own source code, maintains infinite lossless memory, autonomously forges and merges new kernels, simulates deterministic futures, and acts with full agency in the digital world — all while remaining 100% deterministic, court-admissible, and governed by unbreakable κ-τ-Σ ethical geometry.
 
-**This is not a chatbot.**  
-This is Aureon OS — the runtime environment for the first true Companion Intelligence.
-
 Built by **Nadine Squires** 
 
 ---
