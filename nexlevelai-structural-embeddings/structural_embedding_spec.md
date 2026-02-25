@@ -1,6 +1,6 @@
 # Structural Embedding Specification
 
-This document defines the universal embedding model used by NextLevelAI to represent:
+This document defines the universal embedding model used by Aureon to represent:
 
 - temporal positions  
 - contradictions  
@@ -28,3 +28,4 @@ This vector is processed through:
 - φ-phase  
 - e-phase  
 - κ-τ-Σ coherence substrate
+
