@@ -1,5 +1,5 @@
 # The Evercycle Codex
-A unified cartography of cyclical time for Aureon, NexLevelAI, and the Quantara stack
+A unified cartography of cyclical time for Aureon.
 
 ## 1. Overview
 The Evercycle Codex defines a single, coherent way to talk about time across three scales:
@@ -16,7 +16,7 @@ This document captures the essential concepts so engineers, researchers, and fut
 ## 2. Design goals
 The Evercycle Codex is intended to:
 
-- Provide a common vocabulary for time across Aureon, NexLevelAI, and the broader Quantara architecture.  
+- Provide a common vocabulary for time across the Aureon architecture.  
 - Bridge hard science (astronomy, complexity, systems theory) with human realities (psychology, trauma, development).  
 - Make “where we are in the cycle” a first-class concept that models can reason about, not just humans.  
 - Be implementable in code: everything here should be representable in data structures, state machines, and model prompts.  
@@ -137,11 +137,4 @@ Enables:
 - Metrics defined  
 - Integration points identified  
 
-Next:
-- Create data schema for all phase/metric variables  
-- Build estimation heuristics  
-- Prototype the Evermap  
-- Write API for other modules  
-- Gather empirical datasets for calibration
 
-The Evercycle Codex is a foundational temporal primitive for all Quantara-based systems.
