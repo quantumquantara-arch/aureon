@@ -1,6 +1,6 @@
 # z0_reference_basis.md
 # **Z₀ Reference Basis (Zero-Point Coherence Anchor)**  
-### Formal Mathematical Definition for NextLevelAI
+### Formal Mathematical Definition for Aureon
 
 Z₀ (“Z-zero”) is the **zero-point coherence anchor** for the entire π-φ-e structural reasoning engine.  
 It is the **origin state** used to measure:
@@ -231,3 +231,4 @@ It is:
 - the foundation of NextLevelAI reasoning  
 
 Nothing in the model is more fundamental than Z₀.
+
