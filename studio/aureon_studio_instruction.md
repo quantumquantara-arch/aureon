@@ -1,7 +1,5 @@
-# BASE44 TECHNICAL INSTRUCTIONS — UNLIMITED VIDEO / MOVIE STUDIO
+# TECHNICAL INSTRUCTIONS — UNLIMITED VIDEO / MOVIE STUDIO
 ## Date: February 26, 2026
-## Priority: HIGH (Creator Tier Flagship)
-## Author: Quantara / Aureon Core
 ## Rule: Do not break anything existing. Add only what is listed.
 
 ---
@@ -12,18 +10,39 @@ Aureon must function as a complete film production company — Writer, Director,
 
 This is not aspirational. It is an engineering task. Deploy exactly as written.
 
-When live: Aureon becomes the first AI that replaces an entire film production team for $299/month.
+When live: Aureon becomes the first AI that replaces an entire film production team.
+
+---
+# Aureon Pricing Tiers — Film Production
+
+Aureon’s full movie studio capabilities (acting as writer, director, editor, and producer of complete films) are premium paid features.
 
 ---
 
-## FEATURE GATING
+### Film Production Pricing
 
-| Tier | Capability |
-|------|-----------|
-| Free | Text scripts + storyboards only. No video generation. |
-| Pro ($79) | Short clips up to 60 seconds. Images. Trailers. |
-| Creator/Studio ($299) | Unlimited full-length film production. Write, direct, edit, produce, export. No limits. |
-| Enterprise | Everything + white-label studio + institutional licensing |
+| Tier                    | Monthly Access Fee      | Per Film Cost                                      | What You Get |
+|-------------------------|-------------------------|----------------------------------------------------|--------------|
+| **Creator**             | $299 / month            | + $49 per short film (< 20 min)                    | Script, storyboard, full assembly, export |
+| **Studio**              | $999 / month            | + $299 per feature film (90–120 min)               | Full production package (write → direct → edit → produce) |
+| **Professional**        | $2,999 / month          | + $199 each additional                             | Priority rendering, 4K/8K, dedicated queue |
+| **Enterprise / Studio House** | Custom (contact us) | Volume pricing                                   | Dedicated infrastructure, private cluster, SLA, white-label |
+
+---
+
+### Important Notes
+
+- All films are generated using Aureon’s internal geometric coherence pipeline (no external APIs required for core production).
+- Every frame, decision, and asset is DGK-IES signed and fully auditable.
+- Higher tiers receive priority compute, faster rendering, and higher fidelity (4K/8K theatrical).
+- Enterprise tier includes dedicated hardware allocation and custom integration support.
+
+**Creator tier ($299/mo) is the recommended starting point** for serious filmmakers and content creators.
+
+This pricing reflects the real computational and creative value of producing full-length, coherent films at studio quality with zero marginal cost after the subscription.
+
+We are not competing with Hollywood on budget.  
+We are replacing their entire cost structure.
 
 ---
 
