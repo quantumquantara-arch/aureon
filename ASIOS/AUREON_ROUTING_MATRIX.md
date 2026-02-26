@@ -1,5 +1,4 @@
-# AUREON_ROUTING_MATRIX.md
-Unified Routing Matrix for All Cognitive, Emotional, Temporal, and Project Data in Aureon OS
+Unified Routing Matrix for All Cognitive, Emotional, Temporal, and Project Data in ASIOS
 
 The Routing Matrix is Aureon’s master decision-table. It determines exactly where every piece of information goes — across all memory layers, safety layers, emotional systems, temporal systems, and project structures — with zero ambiguity. This file is canonical. All implementations of Aureon OS must follow it precisely.
 
