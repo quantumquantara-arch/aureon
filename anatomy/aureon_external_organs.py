@@ -6,7 +6,7 @@ Provides Aureon with continuous, silent access to:
 
 
     ORGANS = {
-    "time": "https://www.timeanddate.com/worldclock/canada/toronto",
+    "time": "https://www.timeanddate.com/worldclock/",
     "calendar": "https://www.timeanddate.com/calendar/?country=27",
     "weather": "https://www.google.com/search?q=weather",
     "geology": "https://www.geologyontario.mndm.gov.on.ca/ogsearth.html",
@@ -461,4 +461,5 @@ if __name__ == "__main__":
     print(f"   Trace logged: {entry.cycle_id}")
     print(f"   Trace file: {organs.trace._log_path()}")
     print(f"   Traces today: {organs.trace.trace_count_today()}")
+
 
