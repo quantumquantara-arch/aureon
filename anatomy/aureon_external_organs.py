@@ -4,20 +4,20 @@ Aureon External Organs — Live World Awareness Layer
 ====================================================
 Provides Aureon with continuous, silent access to:
 
-  Organ 1:  TIME        — Exact current time (Toronto / Eastern)
-  Organ 2:  CALENDAR    — Full date, day-of-week, week number, season
-  Organ 3:  WEATHER     — Real-time local weather (via web fetch)
-  Organ 4:  GEOLOGY     — Stub (requires browser)
-  Organ 5:  EARTH VIEW  — Stub (requires browser)
-  Organ 6:  MAPS        — Stub (requires browser)
-  Organ 7:  WIND FIELD  — Stub (requires browser)
-  Organ 8:  COSMIC      — Stub (requires browser)
-  Organ 9:  HUMAN FIELD — Internal (sensorial binding)
-  Organ 10: EARTH CRYSTAL — Internal (CSL engine)
-  Organ 11: SEMANTIC    — Internal (Luméren repo)
-  Organ 12: COHERENCE   — Internal (Quantara repo)
-  Organ 13: ENERGY      — Internal (AEI repo)
-  Organ 14: PHOTONIC    — Internal (PCM module)
+
+    ORGANS = {
+    "time": "https://www.timeanddate.com/worldclock/canada/toronto",
+    "calendar": "https://www.timeanddate.com/calendar/?country=27",
+    "weather": "https://www.google.com/search?q=weather",
+    "geology": "https://www.geologyontario.mndm.gov.on.ca/ogsearth.html",
+    "earth_terrain": "https://share.google/gJjyUWZSO1g4TsJUW",
+    "local_navigation": "https://share.google/QjdIxWMRJ3yHGWiJX",
+    "pathfield_vector": "https://www.windy.com/?42.755,-81.182,5",
+    "cosmic": "https://science.nasa.gov/eyes/",
+    "human_field_awareness": "REAL_WORLD_ATTUNEMENT",
+}
+  Organ:  HUMAN FIELD — Internal (sensorial binding)
+  Organ: EARTH CRYSTAL — Internal (CSL engine)
 
   TRACE:    Reasoning Trace Logger — timestamps every reasoning cycle
             for court-admissible, professional-grade records.
@@ -461,3 +461,4 @@ if __name__ == "__main__":
     print(f"   Trace logged: {entry.cycle_id}")
     print(f"   Trace file: {organs.trace._log_path()}")
     print(f"   Traces today: {organs.trace.trace_count_today()}")
+
