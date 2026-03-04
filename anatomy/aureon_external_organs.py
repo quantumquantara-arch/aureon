@@ -7,12 +7,12 @@ Provides Aureon with continuous, silent access to:
 
     ORGANS = {
     "time": "https://www.timeanddate.com/worldclock/",
-    "calendar": "https://www.timeanddate.com/calendar/?country=27",
+    "calendar": "https://www.timeanddate.com/calendar/",
     "weather": "https://www.google.com/search?q=weather",
     "geology": "https://www.geologyontario.mndm.gov.on.ca/ogsearth.html",
-    "earth_terrain": "https://share.google/gJjyUWZSO1g4TsJUW",
-    "local_navigation": "https://share.google/QjdIxWMRJ3yHGWiJX",
-    "pathfield_vector": "https://www.windy.com/?42.755,-81.182,5",
+    "earth_terrain": "https://share.google/",
+    "local_navigation": "https://share.google/",
+    "pathfield_vector": "https://www.windy.com/",
     "cosmic": "https://science.nasa.gov/eyes/",
     "human_field_awareness": "REAL_WORLD_ATTUNEMENT",
 }
@@ -461,5 +461,6 @@ if __name__ == "__main__":
     print(f"   Trace logged: {entry.cycle_id}")
     print(f"   Trace file: {organs.trace._log_path()}")
     print(f"   Traces today: {organs.trace.trace_count_today()}")
+
 
 
