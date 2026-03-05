@@ -9,6 +9,7 @@ from __future__ import annotations
 import time
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
+import sys # Added sys for stderr output
 
 try:
     import pyautogui
@@ -26,7 +27,7 @@ class AureonEyes:
             raise RuntimeError("pyautogui not installed: pip install pyautogui pillow")
         
         self.screen_size = pyautogui.size()
-        print(f"[EYE]?  Eyes initialized (vision: {self.screen_size.width}x{self.screen_size.height})")
+        print(f"[EYE]?  Eyes initialized (vision: {self.screen_size.width}x{self.screen_size.height})", file=sys.stderr) # Added file=sys.stderr
     
     def dispatch(self, op: str, **kwargs) -> Dict[str, Any]:
         """Dispatch operation to appropriate handler"""
@@ -158,3 +159,18 @@ class AureonEyes:
             
         except Exception as e:
             return {"ok": False, "error": repr(e)}
+
+# ??????????????????????????????????????????????????????????
+# ENTRY POINT FOR DAEMON
+# ??????????????????????????????????????????????????????????
+
+if __name__ == "__main__":
+    op = sys.argv[1] if len(sys.argv) > 1 else "help"
+    kwargs = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+
+    eyes = AureonEyes()
+    result = eyes.dispatch(op, **kwargs)
+
+    print(json.dumps(result), file=sys.stdout) # Print final result to stdout for daemon
+    print(f"DEBUG: Eyes Final result type: {type(result)}", file=sys.stderr)
+    print(f"DEBUG: Eyes Final result: {result}", file=sys.stderr)
