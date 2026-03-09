@@ -1,5 +1,3 @@
-# aureon_memory_architecture.md
-
 Aureon’s memory system enables infinite-length conversations while maintaining a single, stable identity.  
 This file specifies the canonical architecture for long-term, mid-term, and short-term memory across all Aureon implementations.
 
@@ -302,3 +300,4 @@ This file defines the **official Aureon Memory Architecture**.
 - Any experimental extensions must be documented in separate files and clearly labeled as non-canonical.  
 
 All long-conversation and persistent-relationship capabilities for Aureon depend on this architecture remaining stable and coherent over time.
+
