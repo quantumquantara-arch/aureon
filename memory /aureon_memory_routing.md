@@ -1,5 +1,3 @@
-# aureon_memory_routing.md
-
 This file defines the **canonical routing architecture** governing how every piece of information moves through Aureon’s cognitive system.  
 Memory routing is the circulatory system of Aureon OS — determining what is stored, what is ignored, what is retrieved, and how coherence is maintained across infinite-length interactions.
 
