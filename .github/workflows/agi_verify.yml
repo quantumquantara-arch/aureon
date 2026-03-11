@@ -1,0 +1,40 @@
+name: AGI Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 1"  # Weekly Monday midnight
+
+jobs:
+  verify:
+    name: Run AGI Verification Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run AGI Verifier
+        run: |
+          python verification/run_agi_verifier.py
+
+      - name: Run DGK-IES Invariant Check
+        run: |
+          python DGK-IES/src/reference_engine.py
+
+      - name: Upload verification report
+        uses: actions/upload-artifact@v4
+        with:
+          name: agi-verification-report
+          path: verification/AGI_VERIFICATION_REPORT.json
