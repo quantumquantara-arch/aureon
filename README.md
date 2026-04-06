@@ -60,9 +60,6 @@ aureon/
 │   ├── aureon_ears.py          # Audio, speech recognition
 │   ├── aureon_body.py          # Somatic field, physical control
 │   └── robotics/               # Physical robotics interface
-├── kernels/          # Cognitive kernel modules
-│   ├── doshema/                # 10+ Doshema reasoning kernels
-│   └── fire_alchemy/           # 37 fire alchemy kernel modules
 ├── memory/           # 3-tier memory architecture
 ├── ASIOS/            # Symbolic kernel — kappa-tau-Sigma core
 ├── DGK-IES/          # Ethics governance — 7 hard invariants
